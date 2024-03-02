@@ -16,7 +16,7 @@ const routes = [
     ,
     {
         path: '/:pathMatch(.*)*',
-        component: () => import('../pages/NotFoundPage.vue')
+        component: () => import('@/pages/PaginaInicio.vue')
     }
 ]
 
