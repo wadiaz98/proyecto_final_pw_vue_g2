@@ -8,14 +8,13 @@
     <label for="">Apellido</label>
     <input type="text" v-model="apellido" />
     <label for="">Fecha de nacimiento</label>
-    <input type="text" v-model="fechaNacimiento" />
+    <input type="datetime-local" v-model="fechaNacimiento" />
     <label for="">Género</label>
     <input type="text" v-model="genero" />
     <label for="">Contraseña</label>
     <input type="text" v-model="contrasenia" />
     <hr />
     <div class="guardado">
-        
       <h6>Lea nuestros términos y condiciones</h6>
       <button @click="guardar">Guardar</button>
     </div>
@@ -23,7 +22,14 @@
 </template>
 
 <script scoped>
+import {registrarFachada} from '@/helpers/clienteUsuario.js'
 export default {
+  props:{
+    tipo: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       cedula: null,
@@ -32,7 +38,6 @@ export default {
       fechaNacimiento:null,
       contrasenia:null,
       genero:null,
-      tipo:null
     };
   },
 
@@ -44,13 +49,13 @@ export default {
         apellido: this.apellido,
         cedula: this.cedula,
         genero:this.genero,
-        fechaNacimeinto:this.fechaNacimiento,
+        fechaNacimiento:this.fechaNacimiento,
         contrasenia:this.contrasenia,
         /* VERIFICAR EL TIPO */
-        tipo:"C"
+        registro: this.tipo
       };
 
-      await saveFacade(clienteBody);
+      await registrarFachada(clienteBody);
       console.log("¡Se registró el cliente!");
     },
   },
@@ -63,6 +68,8 @@ export default {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  padding: auto;
+  height: 70vh;
 }
 input {
   width: 100%;
@@ -76,5 +83,4 @@ label {
   align-items: flex-start;
   flex-direction: row;
 }
-
 </style>

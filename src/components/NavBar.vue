@@ -2,7 +2,7 @@
   <div class="menu">
     
     <router-link to="/registrarse">Registrarse</router-link>
-    <router-link to="/loggin">Iniciar seción</router-link>
+    <router-link to="/loggin">Iniciar sesión</router-link>
   </div>
 </template>
 

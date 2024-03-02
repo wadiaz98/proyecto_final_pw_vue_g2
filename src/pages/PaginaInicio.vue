@@ -20,5 +20,14 @@ export default {};
 #lambo {
   width: 100%;
 }
-
+.principal {
+  background: red;
+  width: 100%;
+  font-size: 5vmin;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 </style>

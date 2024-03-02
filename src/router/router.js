@@ -11,7 +11,7 @@ const routes = [
     },
     {
         path: '/loggin',
-        component:() => import ('@/pages/InicioSesion.vue')
+        component:() => import ('@/pages/Login.vue')
     }
     ,
     {

@@ -18,9 +18,8 @@
         <navBar id="idNavBar" />
       </header>
 
-      <section>
-        <router-view />
-      </section>
+        <router-view class="router"/>
+    
       <aside></aside>
 
       <footer>
@@ -51,7 +50,10 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
+.router{
+  height: 100vh;
+  background: blue;
+}
 #logo {
   width: 20%;
 }
@@ -59,15 +61,6 @@ export default {
   margin-right: auto;
 }
 
-section {
-  background: red;
-  width: 100%;
-  font-size: 5vmin;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .container {
   display: flex;
   justify-content: center;
@@ -82,12 +75,15 @@ header {
   align-items: center;
   flex-direction: row;
 }
+
 footer {
   width: 100%;
   background: #222;
   color: #fff;
   font-size: 1vmin;
   text-transform: uppercase;
+  position: fixed;
+  bottom: 0;
 }
 #idNavBar{
   width: 90%;
