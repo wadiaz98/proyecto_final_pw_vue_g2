@@ -12,6 +12,7 @@
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Avis_logo.svg/1200px-Avis_logo.svg.png"
           alt="Cannot access to resource"
         />
+        <navBar id="idNavBar"/>
       </header>
 
       <section>
@@ -32,13 +33,17 @@
         <h1>© 2024 Grupo 2, Programación Web</h1>
       </footer>
     </div>
+    
   </body>
 </template>
 
 <script>
+import navBar from '@/components/NavBar.vue'
 export default {
   name: "App",
-  components: {},
+  components: {
+    navBar
+  },
 };
 </script>
 
@@ -85,5 +90,10 @@ footer {
   color: #fff;
   font-size: 1vmin;
   text-transform: uppercase;
+}
+header .navBar{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 </style>
