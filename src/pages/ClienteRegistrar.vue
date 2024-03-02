@@ -1,7 +1,6 @@
 <template>
   <h1>Cliente registrar PAGINA</h1>
   <RegistroCliente></RegistroCliente>
-
 </template>
 
 
@@ -13,7 +12,6 @@ import RegistroCliente from '@/components/RegistroCliente.vue';
   RegistroCliente
   },
 };
-</script>
 </script>
 
 <style>
