@@ -8,24 +8,18 @@
   <body>
     <div class="container">
       <header>
-        <img id="logo"
+        <router-link class="home" to="/inicio"><img
+          to="/inicio"
+          id="logo"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Avis_logo.svg/1200px-Avis_logo.svg.png"
           alt="Cannot access to resource"
-        />
-        <navBar id="idNavBar"/>
+        /></router-link>
+        
+        <navBar id="idNavBar" />
       </header>
 
       <section>
-        <div class="principal">
-          <p>
-            Alquila comodidad y confort. En AVIS, disponemos de los mejores
-            modelos de autos para ti. A los mejores precios
-          </p>
-          <img id="lambo"
-          src="https://media.es.wired.com/photos/6425e0e4b4e328f8839787f4/16:9/w_2560%2Cc_limit/Lamborghini-Revuelto-Featured-Gear.jpg"
-          alt="Cannot access to resource"
-          />
-        </div>
+        <router-view />
       </section>
       <aside></aside>
 
@@ -33,16 +27,17 @@
         <h1>© 2024 Grupo 2, Programación Web</h1>
       </footer>
     </div>
-    
   </body>
 </template>
 
 <script>
-import navBar from '@/components/NavBar.vue'
+import navBar from "@/components/NavBar.vue";
+import router from "@/router/router";
 export default {
   name: "App",
   components: {
-    navBar
+    navBar,
+    router,
   },
 };
 </script>
@@ -55,11 +50,12 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
 #logo {
   width: 20%;
 }
-#lambo{
-  width:100%
+.home {
+  margin-right: auto;
 }
 
 section {
@@ -82,7 +78,8 @@ header {
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
+  flex-direction: row;
 }
 footer {
   width: 100%;
@@ -91,9 +88,8 @@ footer {
   font-size: 1vmin;
   text-transform: uppercase;
 }
-header .navBar{
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+#idNavBar{
+  width: 90%;
 }
+
 </style>
