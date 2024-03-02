@@ -1,11 +1,19 @@
 <template>
-  <h1>Cliente registrar</h1>
+  <h1>Cliente registrar PAGINA</h1>
+  <RegistroCliente></RegistroCliente>
+
 </template>
 
-<script>
-export default {
 
-}
+<script>
+import RegistroCliente from '@/components/RegistroCliente.vue';
+  export default {
+
+  components: {
+  RegistroCliente
+  },
+};
+</script>
 </script>
 
 <style>
