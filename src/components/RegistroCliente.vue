@@ -69,7 +69,6 @@ export default {
   align-items: flex-start;
   flex-direction: column;
   padding: auto;
-  height: 70vh;
 }
 input {
   width: 100%;

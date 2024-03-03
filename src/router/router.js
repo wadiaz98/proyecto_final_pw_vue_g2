@@ -15,6 +15,11 @@ const routes = [
     }
     ,
     {
+        path: '/buscar',
+        component: () => import('@/pages/EmpleadoBuscarVehiculo.vue')
+    }
+    ,
+    {
         path: '/:pathMatch(.*)*',
         component: () => import('@/pages/PaginaInicio.vue')
     }

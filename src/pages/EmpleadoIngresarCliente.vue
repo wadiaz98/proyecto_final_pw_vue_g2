@@ -1,13 +1,18 @@
 <template>
-  <h1>Empleado ingresar cliente</h1>
+  <h1>Ingresar cliente</h1>
+  <RegistroCliente tipo="E"></RegistroCliente>
 </template>
 
-<script>
-export default {
 
-}
+<script>
+import RegistroCliente from "@/components/RegistroCliente.vue";
+export default {
+  components: {
+    RegistroCliente,
+  },
+};
 </script>
 
 <style>
-
+  
 </style>
