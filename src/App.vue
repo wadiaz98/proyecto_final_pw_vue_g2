@@ -51,7 +51,6 @@ export default {
   color: #2c3e50;
 }
 .router{
-  height: 100vh;
   background: blue;
 }
 #logo {
