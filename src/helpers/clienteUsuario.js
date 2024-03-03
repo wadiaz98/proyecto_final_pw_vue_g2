@@ -9,3 +9,14 @@ const registrar = async (body) => {
   export const registrarFachada = async (body) => {
     return await registrar(body)
   }
+
+
+  const consultarTodos = async ()=> {
+    const data = axios.get(`http://localhost:8081/API/v1.0/AVIS/clientes`).then(r => r.data)
+    console.log(data)
+    return data
+}
+
+export const consultarTodosFachada = async ()=> {
+    return await consultarTodos();
+}
