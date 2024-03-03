@@ -35,7 +35,7 @@
 </template>
 
 <script scoped>
-import {consultarTodosFachada} from '@/helpers/clienteUsuario.js'
+import {consultarTodosFachada,} from '@/helpers/clienteUsuario.js'
 export default {
   data() {
     return {
