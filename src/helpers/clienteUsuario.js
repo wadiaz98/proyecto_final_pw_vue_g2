@@ -11,12 +11,12 @@ const registrar = async (body) => {
   }
 
 
-  const consultarTodos = async ()=> {
-    const data = axios.get(`http://localhost:8081/API/v1.0/AVIS/clientes`).then(r => r.data)
+  const consultarTodos = async (apellido)=> {
+    const data = axios.get(`http://localhost:8081/API/v1.0/AVIS/clientes/${apellido}`).then(r => r.data)
     console.log(data)
     return data
 }
 
-export const consultarTodosFachada = async ()=> {
-    return await consultarTodos();
+export const consultarTodosFachada = async (apellido)=> {
+    return await consultarTodos(apellido);
 }

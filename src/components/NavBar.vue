@@ -3,7 +3,7 @@
     <router-link to="/registrarse">Registrarse</router-link>
     <router-link to="/loggin">Iniciar sesión</router-link>
     <router-link to="/buscar">Buscar</router-link>
-    <router-link to="/empleados/clientes">Buscar</router-link>
+    <router-link to="/empleados/clientes">Clientes</router-link>
   </div>
 </template>
 
