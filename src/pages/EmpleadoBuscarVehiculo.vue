@@ -2,12 +2,12 @@
   <h1>Empleado buscar Vehículo</h1>
   <div class="buscar">
     <label>Marca:</label>
-    <select v-model="marca" id="cars">
+    <select v-model="marca" id="cars" @change="buscarVehiculo">
       <option v-for="(marc, index) in marcas" :key="index">{{ marc }}</option>
     </select>
   </div>
-  <div v-if="teibol" class="tabla">
-    <table>
+  <div class="tabla">
+    <table v-if="teibol">
       <thead>
         <tr>
           <th>N°</th>
@@ -20,18 +20,19 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Utilizamos v-for para iterar sobre la lista de estudiantes y generar las filas de la tabla -->
+        <!-- Utilizamos v-for para iterar sobre la lista de vehículos y generar las filas de la tabla -->
         <tr v-for="(vehiculo, index) in vehiculos" :key="index">
           <td>{{ index + 1 }}</td>
           <td>{{ vehiculo.placa }}</td>
-          <td>{{ vehiculo.marca }}</td>
           <td>{{ vehiculo.modelo }}</td>
-          <td><button @click="visualizar">Visualizar</button></td>
-          <td><button @click="actualizar">Actualizar</button></td>
+          <td>{{ vehiculo.marca }}</td>
+          <td><button @click="visualizar(vehiculo)">Visualizar</button></td>
+          <td><button @click="actualizar(vehiculo)">Actualizar</button></td>
           <td><button @click="eliminarVehiculo(vehiculo.placa)">Eliminar</button></td>
         </tr>
       </tbody>
     </table>
+    <p v-else>Seleccione la marca para mostrar los vehículos disponibles.</p>
   </div>
 </template>
 
@@ -53,9 +54,6 @@ export default {
   mounted() {
     this.obtenerMarcas();
   },
-  updated() {
-    this.buscarVehiculo();
-  },
   methods: {
     async obtenerMarcas() {
       var data = await obtenerMarcasFachada();
@@ -63,20 +61,22 @@ export default {
       console.log(this.marcas);
     },
     async buscarVehiculo() {
-      console.log(this.marca)
+      console.log(this.marca);
       this.vehiculos = await buscarPorMarcaFachada(this.marca);
-      if (this.vehiculos !== []) {
-        this.teibol = true;
-      }
+      this.teibol = this.vehiculos.length > 0;
     },
     async eliminarVehiculo(placa) {
       await eliminarVehiculoFachada(placa);
+      // Actualizar la lista de vehículos después de eliminar
+      await this.buscarVehiculo();
     },
-    actualizar() {
-      this.$router.push("/actualizar_vehiculo");
+    actualizar(vehiculo) {
+      // Lógica para actualizar el vehículo, por ejemplo: redirigir a una página de actualización con la información del vehículo
+      this.$router.push({ path: "/actualizar_vehiculo", query: { placa: vehiculo.placa } });
     },
-    visualizar() {
-      this.$router.push("/vehiculo");
+    visualizar(vehiculo) {
+      // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
+      this.$router.push({ path: "/vehiculo", query: { placa: vehiculo.placa } });
     },
   },
 };
@@ -93,11 +93,11 @@ export default {
 }
 /* Estilos para las celdas de encabezado */
 .tabla th {
-  background-color: #4B3F53   ;
-/*   border: 1px solid #dddddd; */
+  background-color: #4b3f53;
+  /*   border: 1px solid #dddddd; */
   padding: 8px;
   text-align: left;
-  color: #F1BF57;
+  color: #f1bf57;
 }
 
 /* Estilos para las celdas de datos */

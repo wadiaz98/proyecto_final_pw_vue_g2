@@ -13,9 +13,9 @@
           <th>Cedula</th>
           <th>nombre</th>
           <th>Apellido</th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th>Visualizar</th>
+          <th>Actualizar</th>
+          <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>

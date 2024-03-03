@@ -12,7 +12,7 @@
     <label for="">Género</label>
     <input type="text" v-model="genero" />
     <label for="">Contraseña</label>
-    <input type="text" v-model="contrasenia" />
+    <input type="password" v-model="contrasenia" />
     <hr />
     <div class="guardado">
       <h6>Lea nuestros términos y condiciones</h6>

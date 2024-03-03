@@ -7,7 +7,7 @@
       placeholder="Ingrese su número de cédula"
     />
     <input
-      type="text"
+      type="password"
       v-model="contrasenia"
       placeholder="Ingrese su contraseña"
     />

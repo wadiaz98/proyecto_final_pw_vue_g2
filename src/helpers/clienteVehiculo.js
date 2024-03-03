@@ -34,6 +34,14 @@ const eliminarVehiculo = async (placa) => {
   console.log("se ha eliminao");
 };
 
+const buscarPorPlaca = async (placa) => {
+  const data = axios
+    .get(`http://localhost:8081/API/v1.0/AVIS/vehiculos/placa/${placa}`)
+    .then((r) => r.data);
+  console.log(data);
+  return data;
+};
+
 //Fachadas
 export const obtenerMarcasFachada = async () => {
   return await obtenerMarcas();
@@ -49,4 +57,7 @@ export const actualizarVehiculoFachada = async (placa) => {
 
 export const eliminarVehiculoFachada = async (placa) => {
   return await eliminarVehiculo(placa);
+};
+export const buscarPorPlacaFachada = async (placa) => {
+  return await buscarPorPlaca(placa);
 };

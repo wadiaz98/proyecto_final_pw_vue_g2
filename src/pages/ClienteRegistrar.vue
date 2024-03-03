@@ -1,5 +1,5 @@
 <template>
-  <h1>Cliente registrate ahora, en este momento, el anthonio dijo eso</h1>
+  <h1>CREE SU CUENTA AVIS</h1>
   <RegistroCliente tipo="C"></RegistroCliente>
 </template>
 
