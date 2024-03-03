@@ -1,8 +1,9 @@
 <template>
   <div v-if="tipo === 'E'" class="menu">
-    <router-link to="/buscar">Buscar</router-link>
+    <router-link to="/buscar">Buscar vehículo</router-link>
     <router-link to="/empleados/clientes">Clientes</router-link>
     <router-link to="/empleados/clientes/nuevo">NuevoCliente</router-link>
+    <router-link to="/empleados/vehiculo/nuevo">Nuevo Vehículo </router-link>
   </div>
   <div v-else class="menu">
     <router-link to="/registrarse">Registrarse</router-link>

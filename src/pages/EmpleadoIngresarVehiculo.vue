@@ -1,13 +1,18 @@
 <template>
-  <h1>Empleado ingresar Vehículo</h1>
+  <h1>Ingrese los siguientes datos</h1>
+  <RegistroVehiculo funcion="insertar"></RegistroVehiculo>
 </template>
 
-<script>
-export default {
 
-}
+<script>
+import RegistroVehiculo from "@/components/FormularioVehiculo.vue";
+export default {
+  components: {
+    RegistroVehiculo,
+  },
+};
 </script>
 
 <style>
-
+  
 </style>

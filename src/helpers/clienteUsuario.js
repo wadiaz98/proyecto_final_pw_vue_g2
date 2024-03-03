@@ -19,7 +19,7 @@ const actualizar = async (cedula,body) => {
   const data = axios.put(`http://localhost:8081/API/v1.0/AVIS/clientes/${cedula}`,body).then(r=>r.data)
   console.log(data)
 }
-const eliminar =  async (id) =>{
+const eliminar =  async (cedula) =>{
   const data = axios.delete(`http://localhost:8081/API/v1.0/AVIS/clientes/${cedula}`).then(r=>r.data)
   console.log(data)
 }

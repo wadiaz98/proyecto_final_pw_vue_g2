@@ -27,7 +27,7 @@ const routes = [
   },
   {
     path: "/vehiculo",
-    component: () => import("@/pages/Vehiculo.vue")
+    component: () => import("@/pages/Vehiculo.vue"),
   },
   {
     path: "/actualizar_cliente",
@@ -35,11 +35,15 @@ const routes = [
   },
   {
     path: "/cliente",
-    component: () => import("@/pages/Cliente.vue")
+    component: () => import("@/pages/Cliente.vue"),
   },
   {
     path: "/empleados/clientes/nuevo",
-    component: () => import("@/pages/EmpleadoIngresarCliente.vue")
+    component: () => import("@/pages/EmpleadoIngresarCliente.vue"),
+  },
+  {
+    path: "/empleados/vehiculo/nuevo",
+    component: () => import("@/pages/EmpleadoIngresarVehiculo.vue"),
   },
   {
     path: "/:pathMatch(.*)*",

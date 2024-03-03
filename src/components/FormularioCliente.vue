@@ -70,7 +70,7 @@
     <div v-if="funcion === 'visualizar'" class="otros">
       <h6 class="item_large">Lea nuestros términos y condiciones</h6>
       <button @click="volver()">Volver</button>
-      <button @click="actualizar()">Actualizzar</button>
+      <button @click="actualizar()">Actualizar</button>
     </div>
     <div v-if="funcion === 'actualizar'" class="otros">
       <h6 class="item_large">Lea nuestros términos y condiciones</h6>

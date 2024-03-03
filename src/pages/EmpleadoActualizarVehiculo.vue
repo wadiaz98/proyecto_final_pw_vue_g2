@@ -1,13 +1,31 @@
 <template>
-  <h1>Empleado actualizar Vehículo</h1>
+  <h1>Actualizar vehículo</h1>
+  <RegistroVehiculo v-if="this.placa !== null" funcion="actualizar" :clave="placa"></RegistroVehiculo>
 </template>
 
-<script>
-export default {
 
-}
+<script>
+import RegistroVehiculo from "@/components/FormularioVehiculo.vue";
+export default {
+  components: {
+    RegistroVehiculo,
+  },
+
+  data() {
+    return {
+       
+        placa: this.$route.query.placa,
+
+        
+    };
+  },
+  beforeCreate() {
+    this.placa = this.$route.query.placa;
+    console.log(this.placa)
+  },
+};
 </script>
 
 <style>
-
+  
 </style>
