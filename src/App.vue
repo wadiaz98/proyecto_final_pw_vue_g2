@@ -15,7 +15,7 @@
           alt="Cannot access to resource"
         /></router-link>
         
-        <navBar id="idNavBar" :tipo="E"/>
+        <navBar id="idNavBar" tipo="E"/>
       </header>
 
         <router-view class="router"/>
@@ -39,11 +39,6 @@ export default {
     navBar,
     router,
   },
-  data(){
-    return{
-      tipo
-    };
-  }
 };
 </script>
 
