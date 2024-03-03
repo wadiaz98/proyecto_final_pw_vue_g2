@@ -4,6 +4,8 @@
     <router-link to="/loggin">Iniciar sesión</router-link>
     <router-link to="/buscar">Buscar</router-link>
     <router-link to="/empleados/clientes">Clientes</router-link>
+    <router-link to="/empleados/clientes/nuevo">NuevoCliente</router-link>
+    <router-link to="/vehiculo">Vehiculo</router-link>
   </div>
 </template>
 

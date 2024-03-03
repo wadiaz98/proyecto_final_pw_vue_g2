@@ -5,7 +5,7 @@
 
 
 <script>
-import RegistroCliente from "@/components/RegistroCliente.vue";
+import RegistroCliente from "@/components/FormularioCliente.vue";
 export default {
   components: {
     RegistroCliente,

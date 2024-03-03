@@ -22,42 +22,49 @@
 </template>
 
 <script scoped>
-import {registrarFachada} from '@/helpers/clienteUsuario.js'
+import { registrarFachada } from "@/helpers/clienteUsuario.js";
 export default {
-  props:{
+  props: {
     tipo: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
+    clave: {
+      type: String,
+    },
+    funcion: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
       cedula: null,
       nombre: null,
       apellido: null,
-      fechaNacimiento:null,
-      contrasenia:null,
-      genero:null,
+      fechaNacimiento: null,
+      contrasenia: null,
+      genero: null,
     };
   },
-
   methods: {
     async guardar() {
-        /* VERIFICAR LOS ATRIBUTOS EN EL BACK END */
+      /* VERIFICAR LOS ATRIBUTOS EN EL BACK END */
       const clienteBody = {
         nombre: this.nombre,
         apellido: this.apellido,
         cedula: this.cedula,
-        genero:this.genero,
-        fechaNacimiento:this.fechaNacimiento,
-        contrasenia:this.contrasenia,
+        genero: this.genero,
+        fechaNacimiento: this.fechaNacimiento,
+        contrasenia: this.contrasenia,
         /* VERIFICAR EL TIPO */
-        registro: this.tipo
+        registro: this.tipo,
       };
-
+      // INSERTA 
       await registrarFachada(clienteBody);
       console.log("¡Se registró el cliente!");
     },
+    async actualizar() {},
   },
 };
 </script>
