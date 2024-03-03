@@ -1,6 +1,6 @@
 <template>
   <h1>CREE SU CUENTA AVIS</h1>
-  <RegistroCliente v-if="this.cedula !== null" tipo="C" funcion="actualizar" :clave="cedula"></RegistroCliente>
+  <RegistroCliente v-if="this.cedula !== null" tipo="C" funcion="visualizar" :clave="cedula"></RegistroCliente>
 </template>
 
 

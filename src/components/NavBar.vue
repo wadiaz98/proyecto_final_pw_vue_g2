@@ -1,17 +1,26 @@
 <template>
-  <div class="menu">
-    <router-link to="/registrarse">Registrarse</router-link>
-    <router-link to="/loggin">Iniciar sesión</router-link>
+  <div v-if="tipo === 'E'" class="menu">
     <router-link to="/buscar">Buscar</router-link>
     <router-link to="/empleados/clientes">Clientes</router-link>
     <router-link to="/empleados/clientes/nuevo">NuevoCliente</router-link>
-    <router-link to="/vehiculo">Vehiculo</router-link>
   </div>
+  <div v-else class="menu">
+    <router-link to="/registrarse">Registrarse</router-link>
+    <router-link to="/loggin">Iniciar sesión</router-link>
+  </div>
+
 </template>
 
 <script>
 import router from "@/router/router";
 export default {
+  props:{
+    tipo:{
+      default: "V",
+      required: true,
+      type: String,
+    }
+  },
   components: {
     router,
   },

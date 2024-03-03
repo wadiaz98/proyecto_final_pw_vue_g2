@@ -1,6 +1,6 @@
 <template>
   <h1>Ingresar cliente</h1>
-  <RegistroCliente tipo="E"></RegistroCliente>
+  <RegistroCliente tipo="E" funcion="insertar"></RegistroCliente>
 </template>
 
 

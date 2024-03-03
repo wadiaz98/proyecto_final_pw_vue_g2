@@ -21,13 +21,13 @@
       <tbody>
         <!-- Utilizamos v-for para iterar sobre la lista de estudiantes y generar las filas de la tabla -->
         <tr v-for="(cliente, index) in this.clientes" :key="index">
-          <td>{{ index + 1}} </td>
+          <td>{{ index + 1 }}</td>
           <td>{{ cliente.cedula }}</td>
           <td>{{ cliente.nombre }}</td>
           <td>{{ cliente.apellido }}</td>
-          <td><button>Visualizar</button></td>
-          <td><button>Actualizar</button></td>
-          <td><button>Eliminar</button></td>
+          <td><button @click="visualizar(cliente.cedula)" >Visualizar</button></td>
+          <td><button  @click="actualizar(cliente.cedula)">Actualizar</button></td>
+          <td><button @click="eliminar(cliente.cedula)">Eliminar</button></td>
         </tr>
       </tbody>
     </table>
@@ -35,7 +35,7 @@
 </template>
 
 <script scoped>
-import {consultarTodosFachada,} from '@/helpers/clienteUsuario.js'
+import { consultarTodosFachada, eliminarFachada} from "@/helpers/clienteUsuario.js";
 export default {
   data() {
     return {
@@ -44,12 +44,31 @@ export default {
     };
   },
   methods: {
-   async consultarTodos() {
+    async consultarTodos() {
       const data = await consultarTodosFachada(this.apellido);
       this.clientes = data;
-  }
-}
-}
+    },
+    async eliminar(cedula) {
+      eliminarFachada(cedula);
+      // Actualizar la lista de vehículos después de eliminar
+      await this.consultarTodos();
+    },
+    actualizar(cedula) {
+      // Lógica para actualizar el vehículo, por ejemplo: redirigir a una página de actualización con la información del vehículo
+      this.$router.push({
+        path: "/actualizar_cliente",
+        query: { cedula: cedula },
+      });
+    },
+    visualizar(cedula) {
+      // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
+      this.$router.push({
+        path: "/cliente",
+        query: { cedula: cedula },
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -63,11 +82,11 @@ export default {
 }
 /* Estilos para las celdas de encabezado */
 .tabla th {
-  background-color: #4B3F53   ;
-/*   border: 1px solid #dddddd; */
+  background-color: #4b3f53;
+  /*   border: 1px solid #dddddd; */
   padding: 8px;
   text-align: left;
-  color: #F1BF57;
+  color: #f1bf57;
 }
 
 /* Estilos para las celdas de datos */

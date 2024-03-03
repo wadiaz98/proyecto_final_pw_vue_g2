@@ -2,27 +2,90 @@
   <div class="container">
     <hr />
     <label for="">Cédula</label>
-    <input type="text" v-model="cedula" />
+    <input v-if="funcion === 'insertar'" type="text" v-model="cedula" />
+    <input
+      v-else
+      type="text"
+      v-model="cedula"
+      :disabled="this.funcion == 'visualizar'"
+    />
+
     <label for="">Nombre</label>
-    <input type="text" v-model="nombre" />
+    <input v-if="funcion === 'insertar'" type="text" v-model="nombre" />
+    <input
+      v-else
+      type="text"
+      v-model="nombre"
+      :disabled="this.funcion == 'visualizar'"
+    />
+
     <label for="">Apellido</label>
-    <input type="text" v-model="apellido" />
+    <input v-if="funcion === 'insertar'" type="text" v-model="apellido" />
+    <input
+      v-else
+      type="text"
+      v-model="apellido"
+      :disabled="this.funcion == 'visualizar'"
+    />
+
     <label for="">Fecha de nacimiento</label>
-    <input type="datetime-local" v-model="fechaNacimiento" />
+    <input
+      v-if="funcion === 'insertar'"
+      type="datetime-local"
+      v-model="fechaNacimiento"
+    />
+    <input
+      v-else
+      type="text"
+      v-model="fechaNacimiento"
+      :disabled="this.funcion == 'visualizar'"
+    />
+
     <label for="">Género</label>
-    <input type="text" v-model="genero" />
+    <input v-if="funcion === 'insertar'" type="text" v-model="genero" />
+    <input
+      v-else
+      type="text"
+      v-model="genero"
+      :disabled="this.funcion == 'visualizar'"
+    />
+
     <label for="">Contraseña</label>
-    <input type="password" v-model="contrasenia" />
+    <input
+      v-if="funcion === 'insertar'"
+      type="password"
+      v-model="contrasenia"
+    />
+    <input
+      v-else
+      type="password"
+      v-model="contrasenia"
+      :disabled="this.funcion == 'visualizar'"
+    />
     <hr />
-    <div class="guardado">
+    <div v-if="funcion === 'insertar'" class="guardado">
       <h6>Lea nuestros términos y condiciones</h6>
       <button @click="guardar">Guardar</button>
+    </div>
+    <div v-if="funcion === 'visualizar'" class="otros">
+      <h6 class="item_large">Lea nuestros términos y condiciones</h6>
+      <button @click="volver()">Volver</button>
+      <button @click="actualizar()">Actualizzar</button>
+    </div>
+    <div v-if="funcion === 'actualizar'" class="otros">
+      <h6 class="item_large">Lea nuestros términos y condiciones</h6>
+      <button @click="volver()">Volver</button>
+      <button @click="guardarCambios()">Guardar Cambios</button>
     </div>
   </div>
 </template>
 
 <script scoped>
-import { registrarFachada } from "@/helpers/clienteUsuario.js";
+import {
+  registrarFachada,
+  consultarFachada,
+  actualizarFachada,
+} from "@/helpers/clienteUsuario.js";
 export default {
   props: {
     tipo: {
@@ -37,6 +100,9 @@ export default {
       required: true,
     },
   },
+  mounted() {
+    this.handleData();
+  },
   data() {
     return {
       cedula: null,
@@ -45,9 +111,23 @@ export default {
       fechaNacimiento: null,
       contrasenia: null,
       genero: null,
+      registro: null,
     };
   },
   methods: {
+    async handleData() {
+      if (this.funcion === "visualizar" || this.funcion === "actualizar") {
+        var data = await consultarFachada(this.clave);
+        console.log(data.nombre);
+        this.cedula = this.clave;
+        this.nombre = data.nombre;
+        this.apellido = data.apellido;
+        this.genero = data.genero;
+        this.fechaNacimiento = data.fechaNacimiento;
+        this.contrasenia = data.contrasenia;
+        this.registro = data.registro;
+      }
+    },
     async guardar() {
       /* VERIFICAR LOS ATRIBUTOS EN EL BACK END */
       const clienteBody = {
@@ -60,11 +140,34 @@ export default {
         /* VERIFICAR EL TIPO */
         registro: this.tipo,
       };
-      // INSERTA 
+      // INSERTA
       await registrarFachada(clienteBody);
       console.log("¡Se registró el cliente!");
     },
-    async actualizar() {},
+    async guardarCambios() {
+      const clienteBody = {
+        nombre: this.nombre,
+        apellido: this.apellido,
+        cedula: this.cedula,
+        genero: this.genero,
+        fechaNacimiento: this.fechaNacimiento,
+        contrasenia: this.contrasenia,
+        /* VERIFICAR EL TIPO */
+        registro: this.registro,
+      };
+      var data = await actualizarFachada(clienteBody.cedula, clienteBody);
+    },
+
+    volver() {
+      this.$router.push({ path: "/empleados/clientes" });
+    },
+    actualizar() {
+      // Lógica para actualizar el vehículo, por ejemplo: redirigir a una página de actualización con la información del vehículo
+      this.$router.push({
+        path: "/actualizar_cliente",
+        query: { cedula: this.cedula },
+      });
+    },
   },
 };
 </script>
@@ -88,5 +191,15 @@ label {
   justify-content: center;
   align-items: flex-start;
   flex-direction: row;
+}
+
+.otros {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+  grid-template-rows: repeat(2, 100px); /* Dos filas */
+  gap: 10px; /* Espacio entre las celdas */
+}
+.item_large {
+  grid-column: span 2; /* El elemento ocupa dos columnas */
 }
 </style>

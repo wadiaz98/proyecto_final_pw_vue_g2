@@ -10,8 +10,8 @@ const consultarTodos = async (apellido) => {
   console.log(data)
   return data
 }
-const consultarEstudiante = async (cedula)=> {
-  const data = axios.get(`http://localhost:8081/API/v1.0/AVIS/clientes/${cedula}`).then(r => r.data)
+const consultar = async (cedula)=> {
+  const data = axios.get(`http://localhost:8081/API/v1.0/AVIS/clientes/cedula/${cedula}`).then(r => r.data)
   console.log(data)
   return data
 }
@@ -25,10 +25,6 @@ const eliminar =  async (id) =>{
 }
 
 
-
-
-
-
 export const consultarTodosFachada = async (apellido) => {
   return await consultarTodos(apellido);
 }
@@ -36,12 +32,12 @@ export const consultarTodosFachada = async (apellido) => {
 export const registrarFachada = async (body) => {
   return await registrar(body)
 }
-export const consultarEstudianteFacade = async (cedula)=> {
-  return await consultarEstudiante(cedula);
+export const consultarFachada = async (cedula)=> {
+  return await consultar(cedula);
 }
-export const actualizarFacade = async(cedula, body) => {
+export const actualizarFachada = async(cedula, body) => {
   return await actualizar(cedula, body);
 }
-export const eliminarFacade = async(cedula) => {
+export const eliminarFachada = async(cedula) => {
   return await eliminar(cedula);
 }
