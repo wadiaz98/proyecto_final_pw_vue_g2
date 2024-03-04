@@ -97,6 +97,7 @@
 </template>
 
 <script scoped>
+import { ElMessageBox } from "element-plus";
 import {
   insertarVehiculoFachada,
   buscarPorPlacaFachada,
@@ -160,6 +161,7 @@ export default {
       };
       // INSERTA
       await insertarVehiculoFachada(clienteBody);
+      this.mensaje("Guardando....", "Se ha guardado Correctamente", "success")
       this.refrescar();
       console.log("¡Se registró el cliente!");
     },
@@ -179,6 +181,7 @@ export default {
         clienteBody.placa,
         clienteBody
       );
+      this.mensaje("Actualizando....", "Se ha Actualizado Correctamente", "success")
       await this.visualizar(this.placa);
     },
 
@@ -208,6 +211,18 @@ export default {
       this.$router.push({
         path: "/vehiculo",
         query: { placa: placa },
+      });
+    },
+     mensaje(titulo, mensaje, tipo) {
+      ElMessageBox.alert(mensaje, titulo, {
+        confirmButtonText: "Ok",
+        type: tipo,
+        position: "center",
+        customClass: "messageBox",
+        callback: () => {
+          // Acciones después de hacer clic en "Aceptar"
+          console.log("Mensaje aceptado");
+        },
       });
     },
   },
