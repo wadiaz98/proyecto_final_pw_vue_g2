@@ -4,6 +4,7 @@
     <router-link to="/empleados/clientes">Clientes</router-link>
     <router-link to="/empleados/clientes/nuevo">NuevoCliente</router-link>
     <router-link to="/empleados/vehiculo/nuevo">Nuevo Vehículo </router-link>
+    <router-link to="/empleados/vehiculo/retirar">Retirar vehículo </router-link>
   </div>
   <div v-else class="menu">
     <router-link to="/registrarse">Registrarse</router-link>
