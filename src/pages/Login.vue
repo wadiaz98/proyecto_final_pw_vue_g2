@@ -23,7 +23,7 @@
 <script>
 import { ElMessageBox } from "element-plus";
 
-import {verificarUsuarioFachada} from "@/helpers/clienteUsuario";
+import { verificarUsuarioFachada } from "@/helpers/clienteUsuario";
 
 export default {
   data() {
@@ -54,30 +54,45 @@ export default {
         await this.redireccionar();
       } else {
         if (await verificarUsuarioFachada(clienteBody)) {
-          this.$emit("cambio-tipo", "C");
-          this.usuario.id = this.cedula;
-          this.usuario.tipo = "C";
-          await this.redireccionar();
+          this.mensajeOK();
         } else {
-          this.mostrarMensaje();
+          this.mensajeAlerta();
         }
       }
     },
     redireccionar() {
-      this.$router.push({ path: "/inicio" });
+      console.log(this.usuario)
+      this.$router.push({ path: "/inicio" , usuario: this.usuario});
     },
 
-    mostrarMensaje() {
+    mensajeAlerta() {
+      ElMessageBox.alert("Bienvenido", "Se redireccionara a inicio", {
+        confirmButtonText: "Ok",
+        type: "error",
+        position: "center",
+        customClass: "messageBox",
+        callback: () => {
+          // Acciones después de hacer clic en "Aceptar"
+          console.log("Mensaje aceptado");
+        },
+      });
+    },
+
+    mensajeOK() {
       ElMessageBox.alert(
-        "Credenciales Incorrectas",
-        "Revise sus credenciales e intente nuevamente",
+        "Credenciales Correctas",
+        "¡Credenciales aceptadas correctamente!",
         {
-          confirmButtonText: "Ok",
-          type: "error",
+          confirmButtonText: "Aceptar",
+          type: "success",
           position: "center",
           customClass: "messageBox",
           callback: () => {
             // Acciones después de hacer clic en "Aceptar"
+            this.$emit("cambio-tipo", "C");
+            this.usuario.id = this.cedula;
+            this.usuario.tipo = "C";
+            this.redireccionar();
             console.log("Mensaje aceptado");
           },
         }

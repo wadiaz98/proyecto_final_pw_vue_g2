@@ -28,7 +28,9 @@
           <td>{{ vehiculo.marca }}</td>
           <td><button @click="visualizar(vehiculo)">Visualizar</button></td>
           <td><button @click="actualizar(vehiculo)">Actualizar</button></td>
-          <td><button @click="eliminarVehiculo(vehiculo.placa)">Eliminar</button></td>
+          <td>
+            <button @click="eliminarVehiculo(vehiculo.placa)">Eliminar</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -37,10 +39,11 @@
 </template>
 
 <script>
+import { ElMessageBox } from "element-plus";
 import {
   buscarPorMarcaFachada,
   obtenerMarcasFachada,
-  eliminarVehiculoFachada
+  eliminarVehiculoFachada,
 } from "@/helpers/clienteVehiculo.js";
 export default {
   data() {
@@ -66,17 +69,38 @@ export default {
       this.teibol = this.vehiculos.length > 0;
     },
     async eliminarVehiculo(placa) {
-      await eliminarVehiculoFachada(placa);
+      var data = await eliminarVehiculoFachada(placa);
+      console.log(data);
       // Actualizar la lista de vehículos después de eliminar
+      this.mensaje(data);
       await this.buscarVehiculo();
     },
     actualizar(vehiculo) {
       // Lógica para actualizar el vehículo, por ejemplo: redirigir a una página de actualización con la información del vehículo
-      this.$router.push({ path: "/actualizar_vehiculo", query: { placa: vehiculo.placa } });
+      this.$router.push({
+        path: "/actualizar_vehiculo",
+        query: { placa: vehiculo.placa },
+      });
     },
     visualizar(vehiculo) {
       // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
-      this.$router.push({ path: "/vehiculo", query: { placa: vehiculo.placa } });
+      this.$router.push({
+        path: "/vehiculo",
+        query: { placa: vehiculo.placa },
+      });
+    },
+
+    mensaje(data) {
+      ElMessageBox.alert(data, "Eliminando Vehiculo...", {
+        confirmButtonText: "Ok",
+        type: "error",
+        position: "center",
+        customClass: "messageBox",
+        callback: () => {
+          // Acciones después de hacer clic en "Aceptar"
+          console.log("Mensaje aceptado");
+        },
+      });
     },
   },
 };

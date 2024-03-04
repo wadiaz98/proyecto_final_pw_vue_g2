@@ -40,7 +40,7 @@
           <td>{{ vehiculo.valorDia }}</td>
 
           <td>
-            <button @click="reservar()">Reservar</button>
+            <button  @click="reservar()">Reservar</button>
           </td>
         </tr>
       </tbody>

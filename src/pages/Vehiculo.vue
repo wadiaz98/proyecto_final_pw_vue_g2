@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
   p,
 label {
   font-size: 2vmin;

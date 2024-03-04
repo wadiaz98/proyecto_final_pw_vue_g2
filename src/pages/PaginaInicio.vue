@@ -15,7 +15,7 @@
 <script>
 export default {
   mounted(){
-    console.log(this.$route.query.tipo)
+    console.log(this.$route.query.usuario)
   }
 };
 

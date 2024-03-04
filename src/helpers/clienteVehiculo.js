@@ -37,8 +37,7 @@ const eliminarVehiculo = async (placa) => {
   const data = axios
     .delete(`http://localhost:8081/API/v1.0/AVIS/vehiculos/${placa}`)
     .then((r) => r.data);
-
-  console.log("se ha eliminao");
+  return data;
 };
 
 const buscarPorPlaca = async (placa) => {
