@@ -124,7 +124,7 @@ export default {
         this.apellido = data.apellido;
         this.genero = data.genero;
         this.fechaNacimiento = data.fechaNacimiento;
-        this.contrasenia = data.contrasenia;
+        this.contrasenia = data.password;
         this.registro = data.registro;
       }
     },
@@ -136,7 +136,7 @@ export default {
         cedula: this.cedula,
         genero: this.genero,
         fechaNacimiento: this.fechaNacimiento,
-        contrasenia: this.contrasenia,
+        password: this.contrasenia,
         /* VERIFICAR EL TIPO */
         registro: this.tipo,
       };
@@ -152,7 +152,7 @@ export default {
         cedula: this.cedula,
         genero: this.genero,
         fechaNacimiento: this.fechaNacimiento,
-        contrasenia: this.contrasenia,
+        password: this.contrasenia,
         /* VERIFICAR EL TIPO */
         registro: this.registro,
       };

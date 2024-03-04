@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { verificarUsuarioFachada} from "@/helpers/clienteUsuario.js";
+import  verificarUsuarioFachada from "@/helpers/clienteUsuario";
 export default {
   data() {
     return {
@@ -38,14 +38,8 @@ export default {
     async inicio() {
       /* VERIFICAR LOS ATRIBUTOS EN EL BACK END */
       const clienteBody = {
-        nombre: null,
-        apellido: null,
         cedula: this.cedula,
-        genero: null,
-        fechaNacimiento: null,
-        contrasenia: this.contrasenia,
-        /* VERIFICAR EL TIPO */
-        registro: this.registro,
+        password: this.contrasenia
       };
       console.log(clienteBody)
 
