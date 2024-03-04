@@ -21,16 +21,22 @@
 </template>
 
 <script>
+
+import { ElMessageBox } from "element-plus";
+
 import  verificarUsuarioFachada from "@/helpers/clienteUsuario";
+
 export default {
   data() {
     return {
       cedula: null,
       contrasenia: null,
+
       usuario: {
         id: null,
         tipo: null,
       },
+
     };
   },
 
@@ -39,9 +45,46 @@ export default {
       /* VERIFICAR LOS ATRIBUTOS EN EL BACK END */
       const clienteBody = {
         cedula: this.cedula,
+        contrasenia: this.contrasenia,
         password: this.contrasenia
       };
       console.log(clienteBody)
+
+
+      if (this.cedula === "admin" && this.contrasenia === "admin") {
+        this.$emit("cambio-tipo", "E");
+        await this.redireccionar();
+      } else {
+        this.mostrarMensaje();
+        /* if (await inicioFachada(clienteBody)) {
+          this.$emit("cambio-tipo", "C");
+          await this.redireccionar();
+        } else { */
+        // mensaje de revisa usuario y contraseña
+        console.log("Revisa usuario y contraseña");
+        // }
+      }
+    },
+
+    redireccionar() {
+      this.$router.push({ path: "/inicio" });
+    },
+
+    mostrarMensaje() {
+      ElMessageBox.alert(
+        "Credenciales Incorrectas",
+        "Revise sus credenciales e intente nuevamente",
+        {
+          confirmButtonText: "Ok",
+          type: "error",
+          position: "center",
+          customClass:"messageBox",
+          callback: () => {
+            // Acciones después de hacer clic en "Aceptar"
+            console.log("Mensaje aceptado");
+          },
+        }
+      );
 
       var data = await verificarUsuarioFachada(clienteBody);
       console.log(data)
@@ -64,12 +107,21 @@ export default {
     },
     redireccionar() {
       this.$router.push({ path: "/inicio", usuario: this.usuario });
+
     },
   },
 };
 </script>
 
 <style scoped>
+
+.messageBox{
+  background-color: #833e3e!important;
+  color:rgb(221, 23, 23)3!important; 
+  border: 1px solid #1c0fcf; 
+  padding: 10px; 
+  width: 10%!important; 
+}
 h1 {
   align-items: center;
   font-style: italic;
