@@ -16,7 +16,7 @@
       Política de privacidad y los Términos de servicio de Google.
     </h6>
 
-    <button @click="iniciar">Iniciar Sesión</button>
+    <button @click="inicio">Iniciar Sesión</button>
   </div>
 </template>
 
@@ -37,11 +37,30 @@ export default {
         cedula: this.cedula,
         contrasenia:this.contrasenia,
       };
-      await inicioFachada(clienteBody);
-      console.log("¡Se registró el cliente!");
+
+      if(this.cedula === 'admin' && this.contrasenia === 'admin'){
+        this.$emit('cambio-tipo', 'E');
+         await this.redireccionar()
+      }else{
+        if(await inicioFachada(clienteBody)){
+          this.$emit('cambio-tipo', 'C')
+          await this.redireccionar()
+        }
+        else{
+          //mensaje de revisa ususua y contraseña
+        }
+      }
+      
+      
+
     },
+    redireccionar(){
+      this.$router.push({ path: "/inicio" });
+    }
   },
 };
+
+
 </script>
 
 <style scoped>

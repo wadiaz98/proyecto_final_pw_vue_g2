@@ -53,10 +53,10 @@ const routes = [
     path: "/empleados/vehiculo/nuevo",
     component: () => import("@/pages/EmpleadoIngresarVehiculo.vue"),
   },
-  {
+  /* {
     path: "/cliente/pago",
     component: () => import("@/pages/ClientePago.vue"),
-  },
+  }, */
   {
     path: "/empleados/vehiculo/retirar",
     component: () => import("@/pages/EmpleadoRetirarVehiculo.vue")

@@ -8,39 +8,53 @@
   <body>
     <div class="container">
       <header>
-        <router-link class="home" to="/inicio"><img
-          to="/inicio"
-          id="logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Avis_logo.svg/1200px-Avis_logo.svg.png"
-          alt="Cannot access to resource"
+        <router-link class="home" to="/inicio"
+          ><img
+            to="/inicio"
+            id="logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Avis_logo.svg/1200px-Avis_logo.svg.png"
+            alt="Cannot access to resource"
         /></router-link>
-        
-        <navBar id="idNavBar" tipo="C"/>
+
+        <navBar id="idNavBar" :tipo= "tipo" />
       </header>
 
-        <router-view class="router"/>
+      <router-view  class="router" @cambio-tipo="actualizarTipo" />
 
-      <mensaje :data="true"/>
-      
+    <!--   <mensaje :data="true" /> -->
+
       <footer>
         <h1>© 2024 Grupo 2, Programación Web</h1>
       </footer>
     </div>
   </body>
-
 </template>
 
 <script>
 import navBar from "@/components/NavBar.vue";
 import router from "@/router/router";
 import mensaje from "@/components/Mensaje.vue";
+import { mount } from '@vue/test-utils';
 export default {
   name: "App",
   components: {
     navBar,
     router,
-    mensaje
+    mensaje,
   },
+    data() {
+    return {
+      tipo: "V",
+      
+    };
+  },
+   methods: {
+    actualizarTipo(nuevoTipo) {
+      this.tipo = nuevoTipo;
+    }
+    }
+
+
 };
 </script>
 
@@ -63,7 +77,7 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-.router{
+.router {
   background: blue;
 }
 #logo {
@@ -97,8 +111,7 @@ footer {
   position: fixed;
   bottom: 0;
 }
-#idNavBar{
+#idNavBar {
   width: 90%;
 }
-
 </style>
