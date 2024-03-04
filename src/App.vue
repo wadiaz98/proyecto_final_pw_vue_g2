@@ -15,7 +15,7 @@
           alt="Cannot access to resource"
         /></router-link>
         
-        <navBar id="idNavBar" tipo="E"/>
+        <navBar id="idNavBar" tipo="C"/>
       </header>
 
         <router-view class="router"/>

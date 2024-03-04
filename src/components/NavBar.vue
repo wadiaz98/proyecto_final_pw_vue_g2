@@ -6,6 +6,7 @@
     <router-link to="/empleados/vehiculo/nuevo">Nuevo Vehículo </router-link>
   </div>
   <div v-else class="menu">
+    <router-link to="/cliente/vehiculos">Vehiculos Disponibles</router-link>
     <router-link to="/registrarse">Registrarse</router-link>
     <router-link to="/loggin">Iniciar sesión</router-link>
   </div>
