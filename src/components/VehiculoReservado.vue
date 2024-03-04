@@ -17,14 +17,14 @@
       <p>{{ modelo }}</p>
       <label for="">Estado:</label>
       <p>{{ estado }}</p>
-      <label for="">Fecha:</label>
-      <p>{{ fecha }}</p>
+      <label for="">Desde:</label>
+      <p>{{ fechaInicio }}</p>
+      <label for="">Hasta:</label>
+      <p>{{ fechaFin }}</p>
       <label for="">Reservado por:</label>
       <p>{{ cedula }}</p>
-      <label for="">Reserva:</label>
-      <p>{{ accion }}</p>
-      <label for="">Fecha de retiro:</label>
-      <p>{{ retiro }}</p>
+      <label v-if="extra" for="">Fecha de retiro:</label>
+      <p v-if="extra">{{ retiro }}</p>
       <hr />
       <button @click="retirar">Retirar</button>
     </div>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import retirarVehiculoReservadoFachada from "@/helpers/clienteReserva";
 export default {
   data() {
     return {
@@ -39,11 +40,16 @@ export default {
       placa: null,
       modelo: null,
       cedula: null,
+      fechaInicio: null,
+      fechaFin: null,
       estado: null, // si esta disponible o no el vehículo
-      accion: null, //si esta ejecutada la reserva o no
       retiro: null, //fecha en la que se retira el vehículo reservado
       crear: false,
+      extra: false, //Creará la fecha de retiro
     };
+  },
+  updated: function(){
+    this.buscar()
   },
   methods: {
     async buscar() {
@@ -52,21 +58,17 @@ export default {
       if (data !== undefined) {
         this.placa = data.placa;
         this.modelo = data.modelo;
-        this.fecha = data.fecha;
+        this.fechaInicio = data.fechaInicio;
+        this.fechaFin = data.fechaFin;
         this.cedula = data.cedula;
         this.estado = data.estado;
-        this.accion = data.accion;
         this.retiro = data.retiro;
         this.crear = true;
       }
     },
     async retirar() {
-      const body = {
-        estado: this.estado,
-        retiro: this.retiro,
-        accion: this.accion,
-      };
-      await retirarVehiculoFachada(this.reserva, body);
+      this.extra = true;
+      await retirarVehiculoReservadoFachada(this.reserva);
     },
   },
 };
