@@ -15,13 +15,13 @@
           alt="Cannot access to resource"
         /></router-link>
         
-        <navBar id="idNavBar" tipo="E"/>
+        <navBar id="idNavBar" tipo="C"/>
       </header>
 
         <router-view class="router"/>
-    
-      <aside></aside>
 
+      <mensaje :data="true"/>
+      
       <footer>
         <h1>© 2024 Grupo 2, Programación Web</h1>
       </footer>
@@ -33,16 +33,29 @@
 <script>
 import navBar from "@/components/NavBar.vue";
 import router from "@/router/router";
+import mensaje from "@/components/Mensaje.vue";
 export default {
   name: "App",
   components: {
     navBar,
     router,
+    mensaje
   },
 };
 </script>
 
 <style>
+.mensaje {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

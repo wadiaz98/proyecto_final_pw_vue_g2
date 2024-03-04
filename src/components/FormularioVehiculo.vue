@@ -104,7 +104,6 @@ import {
 } from "@/helpers/clienteVehiculo.js";
 export default {
   props: {
-
     //Clave primaria es de placa
     clave: {
       type: String,
@@ -161,6 +160,7 @@ export default {
       };
       // INSERTA
       await insertarVehiculoFachada(clienteBody);
+      this.refrescar();
       console.log("¡Se registró el cliente!");
     },
     async guardarCambios() {
@@ -175,7 +175,11 @@ export default {
         valorDia: this.valorDia,
         estado: this.estado,
       };
-      var data = await actualizarVehiculoFachada(clienteBody.placa, clienteBody);
+      var data = await actualizarVehiculoFachada(
+        clienteBody.placa,
+        clienteBody
+      );
+      await this.visualizar(this.placa);
     },
 
     volver() {
@@ -186,6 +190,24 @@ export default {
       this.$router.push({
         path: "/actualizar_vehiculo",
         query: { placa: this.placa },
+      });
+    },
+    refrescar() {
+      this.placa = null;
+      this.modelo = null;
+      this.marca = null;
+      this.anio = null;
+      this.pais = null;
+      this.cilindraje = null;
+      this.avaluo = null;
+      this.valorDia = null;
+      this.estado = null;
+    },
+    visualizar(placa) {
+      // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
+      this.$router.push({
+        path: "/vehiculo",
+        query: { placa: placa },
       });
     },
   },

@@ -14,6 +14,14 @@ const routes = [
     component: () => import("@/pages/Login.vue"),
   },
   {
+    path: "/cliente/vehiculos",
+    component: () => import("@/pages/ClienteListaVehiculos.vue"),
+  },
+  {
+    path: "/cliente/actualizar",
+    component: () => import("@/pages/ClienteActualizar.vue")
+  },
+  {
     path: "/buscar",
     component: () => import("@/pages/EmpleadoBuscarVehiculo.vue"),
   },
@@ -49,7 +57,9 @@ const routes = [
     path: "/cliente/pago",
     component: () => import("@/pages/ClientePago.vue"),
   },
-
+    path: "/empleados/vehiculo/retirar",
+    component: () => import("@/pages/EmpleadoRetirarVehiculo.vue")
+  },
   {
     path: "/:pathMatch(.*)*",
     component: () => import("@/pages/PaginaInicio.vue"),

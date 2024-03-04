@@ -7,7 +7,7 @@
       v-else
       type="text"
       v-model="cedula"
-      :disabled="this.funcion == 'visualizar'"
+      :disabled="this.funcion === 'visualizar' || this.tipo === 'C'"
     />
 
     <label for="">Nombre</label>
@@ -142,6 +142,7 @@ export default {
       };
       // INSERTA
       await registrarFachada(clienteBody);
+      this.refrescar();
       console.log("¡Se registró el cliente!");
     },
     async guardarCambios() {
@@ -156,6 +157,7 @@ export default {
         registro: this.registro,
       };
       var data = await actualizarFachada(clienteBody.cedula, clienteBody);
+      this.visualizar(this.cedula);
     },
 
     volver() {
@@ -167,6 +169,21 @@ export default {
         path: "/actualizar_cliente",
         query: { cedula: this.cedula },
       });
+    },
+    visualizar(cedula) {
+      // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
+      this.$router.push({
+        path: "/cliente",
+        query: { cedula: cedula },
+      });
+    },
+    refrescar() {
+      this.cedula = null;
+      this.nombre = null;
+      this.apellido = null;
+      this.fechaNacimiento = null;
+      this.contrasenia = null;
+      this.genero = null;
     },
   },
 };
