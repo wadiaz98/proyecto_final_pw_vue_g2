@@ -14,6 +14,10 @@ const routes = [
     component: () => import("@/pages/Login.vue"),
   },
   {
+    path: "/logout",
+    component: () => import("@/pages/LogOut.vue"),
+  },
+  {
     path: "/cliente/vehiculos",
     component: () => import("@/pages/ClienteListaVehiculos.vue"),
   },

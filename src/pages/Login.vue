@@ -21,46 +21,58 @@
 </template>
 
 <script>
+import { verificarUsuarioFachada} from "@/helpers/clienteUsuario.js";
 export default {
   data() {
     return {
       cedula: null,
-      contrasenia:null,
-
+      contrasenia: null,
+      usuario: {
+        id: null,
+        tipo: null,
+      },
     };
   },
 
   methods: {
     async inicio() {
-        /* VERIFICAR LOS ATRIBUTOS EN EL BACK END */
+      /* VERIFICAR LOS ATRIBUTOS EN EL BACK END */
       const clienteBody = {
+        nombre: null,
+        apellido: null,
         cedula: this.cedula,
-        contrasenia:this.contrasenia,
+        genero: null,
+        fechaNacimiento: null,
+        contrasenia: this.contrasenia,
+        /* VERIFICAR EL TIPO */
+        registro: this.registro,
       };
+      console.log(clienteBody)
 
-      if(this.cedula === 'admin' && this.contrasenia === 'admin'){
-        this.$emit('cambio-tipo', 'E');
-         await this.redireccionar()
-      }else{
-        if(await inicioFachada(clienteBody)){
-          this.$emit('cambio-tipo', 'C')
-          await this.redireccionar()
-        }
-        else{
+      var data = await verificarUsuarioFachada(clienteBody);
+      console.log(data)
+
+      if (this.cedula === "admin" && this.contrasenia === "admin") {
+        this.$emit("cambio-tipo", "E");
+        this.usuario.id = "admin";
+        this.usuario.tipo = "E";
+        await this.redireccionar();
+      } else {
+        if (data) {
+          this.$emit("cambio-tipo", "C");
+          this.usuario.id = this.cedula;
+          this.usuario.tipo = "C";
+          await this.redireccionar();
+        } else {
           //mensaje de revisa ususua y contraseña
         }
       }
-      
-      
-
     },
-    redireccionar(){
-      this.$router.push({ path: "/inicio" });
-    }
+    redireccionar() {
+      this.$router.push({ path: "/inicio", usuario: this.usuario });
+    },
   },
 };
-
-
 </script>
 
 <style scoped>

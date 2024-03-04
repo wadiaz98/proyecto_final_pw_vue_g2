@@ -5,12 +5,14 @@
     <router-link to="/empleados/clientes/nuevo">NuevoCliente</router-link>
     <router-link to="/empleados/vehiculo/nuevo">Nuevo Vehículo </router-link>
     <router-link to="/empleados/vehiculo/retirar">Retirar vehículo </router-link>
+    <router-link to="/logout">Salir</router-link>
   </div>
   <div v-else class="menu">
     <router-link to="/cliente/vehiculos">Vehiculos Disponibles</router-link>
     <router-link v-if="tipo !=='V'" to="/cliente/actualizar">Editar datos</router-link>
     <router-link v-if="tipo ==='V'" to="/registrarse">Registrarse</router-link>
     <router-link v-if="tipo ==='V'" to="/loggin">Iniciar sesión</router-link>
+    <router-link v-if="tipo !=='V'" to="/logout">Salir</router-link>
   </div>
 
 </template>
