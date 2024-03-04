@@ -31,6 +31,7 @@ const eliminar = async (cedula) => {
     .delete(`http://localhost:8081/API/v1.0/AVIS/clientes/${cedula}`)
     .then((r) => r.data);
   console.log(data);
+  return data;
 };
 const verificarUsuario = async (body) => {
   const data = axios

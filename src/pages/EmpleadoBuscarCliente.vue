@@ -25,8 +25,12 @@
           <td>{{ cliente.cedula }}</td>
           <td>{{ cliente.nombre }}</td>
           <td>{{ cliente.apellido }}</td>
-          <td><button @click="visualizar(cliente.cedula)" >Visualizar</button></td>
-          <td><button  @click="actualizar(cliente.cedula)">Actualizar</button></td>
+          <td>
+            <button @click="visualizar(cliente.cedula)">Visualizar</button>
+          </td>
+          <td>
+            <button @click="actualizar(cliente.cedula)">Actualizar</button>
+          </td>
           <td><button @click="eliminar(cliente.cedula)">Eliminar</button></td>
         </tr>
       </tbody>
@@ -35,7 +39,11 @@
 </template>
 
 <script scoped>
-import { consultarTodosFachada, eliminarFachada} from "@/helpers/clienteUsuario.js";
+import { ElMessageBox } from "element-plus";
+import {
+  consultarTodosFachada,
+  eliminarFachada,
+} from "@/helpers/clienteUsuario.js";
 export default {
   data() {
     return {
@@ -49,8 +57,9 @@ export default {
       this.clientes = data;
     },
     async eliminar(cedula) {
-      eliminarFachada(cedula);
+      var data = eliminarFachada(cedula);
       // Actualizar la lista de vehículos después de eliminar
+      this.mensaje(data);
       await this.consultarTodos();
     },
     actualizar(cedula) {
@@ -65,6 +74,19 @@ export default {
       this.$router.push({
         path: "/cliente",
         query: { cedula: cedula },
+      });
+    },
+
+    mensaje(data) {
+      ElMessageBox.alert(data, "Eliminando Cliente...", {
+        confirmButtonText: "Ok",
+        type: "error",
+        position: "center",
+        customClass: "messageBox",
+        callback: () => {
+          // Acciones después de hacer clic en "Aceptar"
+          console.log("Mensaje aceptado");
+        },
       });
     },
   },
