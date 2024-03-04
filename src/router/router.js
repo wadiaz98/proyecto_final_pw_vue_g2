@@ -57,6 +57,7 @@ const routes = [
     path: "/cliente/pago",
     component: () => import("@/pages/ClientePago.vue"),
   },
+  {
     path: "/empleados/vehiculo/retirar",
     component: () => import("@/pages/EmpleadoRetirarVehiculo.vue")
   },
