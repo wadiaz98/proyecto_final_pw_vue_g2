@@ -50,6 +50,10 @@ const routes = [
     component: () => import("@/pages/EmpleadoIngresarVehiculo.vue"),
   },
   {
+    path: "/empleados/vehiculo/retirar",
+    component: () => import("@/pages/EmpleadoRetirarVehiculo.vue")
+  },
+  {
     path: "/:pathMatch(.*)*",
     component: () => import("@/pages/PaginaInicio.vue"),
   },
