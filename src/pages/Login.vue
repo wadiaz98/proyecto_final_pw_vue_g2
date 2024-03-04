@@ -21,12 +21,22 @@
 </template>
 
 <script>
+
 import { ElMessageBox } from "element-plus";
+
+import  verificarUsuarioFachada from "@/helpers/clienteUsuario";
+
 export default {
   data() {
     return {
       cedula: null,
       contrasenia: null,
+
+      usuario: {
+        id: null,
+        tipo: null,
+      },
+
     };
   },
 
@@ -36,7 +46,10 @@ export default {
       const clienteBody = {
         cedula: this.cedula,
         contrasenia: this.contrasenia,
+        password: this.contrasenia
       };
+      console.log(clienteBody)
+
 
       if (this.cedula === "admin" && this.contrasenia === "admin") {
         this.$emit("cambio-tipo", "E");
@@ -72,6 +85,29 @@ export default {
           },
         }
       );
+
+      var data = await verificarUsuarioFachada(clienteBody);
+      console.log(data)
+
+      if (this.cedula === "admin" && this.contrasenia === "admin") {
+        this.$emit("cambio-tipo", "E");
+        this.usuario.id = "admin";
+        this.usuario.tipo = "E";
+        await this.redireccionar();
+      } else {
+        if (data) {
+          this.$emit("cambio-tipo", "C");
+          this.usuario.id = this.cedula;
+          this.usuario.tipo = "C";
+          await this.redireccionar();
+        } else {
+          //mensaje de revisa ususua y contraseña
+        }
+      }
+    },
+    redireccionar() {
+      this.$router.push({ path: "/inicio", usuario: this.usuario });
+
     },
   },
 };

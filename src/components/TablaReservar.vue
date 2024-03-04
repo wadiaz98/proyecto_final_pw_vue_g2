@@ -8,7 +8,7 @@
 
     <label>Modelo:</label>
     <select v-model="modelo" id="cars" @change="buscarVehiculo">
-      <option v-for="(marc, index) in marcas" :key="index">{{ marc }}</option>
+      <option v-for="(model, index) in modelos" :key="index">{{ model }}</option>
     </select>
   </div>
   <div class="tabla">
@@ -55,6 +55,7 @@
 import {
   obtenerMarcasFachada,
   buscarPorMarcaYModeloFachada,
+  buscarModelosPorMarcaFachada,
 } from "@/helpers/clienteVehiculo.js";
 export default {
   data() {
@@ -65,6 +66,7 @@ export default {
       vehiculos: [],
       marcas: [],
       modelos: [],
+      usuario: null,
     };
   },
   mounted() {
@@ -77,21 +79,20 @@ export default {
       console.log(this.marcas);
     },
     async obtenerModelos() {
-      var data = await obtenerMarcasFachada();
+      var data = await buscarModelosPorMarcaFachada(this.marca);
       this.modelos = data
     },
     async buscarVehiculo() {
       console.log(this.marca);
       console.log(this.modelo);
       //ELIMINAR ESTO CUANDO YA TENGAN EL BACK DE BUSCAR MODELOS
-      this.vehiculos = await buscarPorMarcaYModeloFachada(this.marca,"A4");
+      this.vehiculos = await buscarPorMarcaYModeloFachada(this.marca,this.modelo);
       this.teibol = this.vehiculos.length > 0;
     },
     reservar(vehiculo) {
       // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
       this.$router.push({
-        path: "/vehiculo",
-        query: { placa: vehiculo.placa },
+        path: "/loggin",
       });
     },
   },

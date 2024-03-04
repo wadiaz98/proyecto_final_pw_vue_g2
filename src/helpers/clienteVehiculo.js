@@ -52,7 +52,15 @@ const buscarPorPlaca = async (placa) => {
 
 const buscarPorMarcaYModelo = async (marca, modelo) => {
   const data = axios
-    .get(`http://localhost:8081/API/v1.0/AVIS/vehiculos/${marca}?modelo=${modelo}`)
+    .get(`http://localhost:8081/API/v1.0/AVIS/vehiculos/filtro?marca=${marca}&modelo=${modelo}`)
+    .then((r) => r.data);
+  console.log(data);
+  return data;
+};
+
+const buscarModelosPorMarca = async (marca) => {
+  const data = axios
+    .get(`http://localhost:8081/API/v1.0/AVIS/vehiculos/modelos/${marca}`)
     .then((r) => r.data);
   console.log(data);
   return data;
@@ -84,4 +92,8 @@ export const insertarVehiculoFachada = async (body) => {
 
 export const buscarPorMarcaYModeloFachada = async (marca,modelo) => {
   return await buscarPorMarcaYModelo(marca,modelo);
+};
+
+export const buscarModelosPorMarcaFachada = async (marca) => {
+  return await buscarModelosPorMarca(marca);
 };
