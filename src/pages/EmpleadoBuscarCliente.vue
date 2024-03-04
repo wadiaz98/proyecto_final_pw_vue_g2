@@ -57,7 +57,7 @@ export default {
       this.clientes = data;
     },
     async eliminar(cedula) {
-      var data = eliminarFachada(cedula);
+      var data = await eliminarFachada(cedula);
       // Actualizar la lista de vehículos después de eliminar
       this.mensaje(data);
       await this.consultarTodos();

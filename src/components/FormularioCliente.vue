@@ -81,6 +81,7 @@
 </template>
 
 <script scoped>
+import { ElMessageBox } from "element-plus";
 import {
   registrarFachada,
   consultarFachada,
@@ -142,6 +143,7 @@ export default {
       };
       // INSERTA
       await registrarFachada(clienteBody);
+      this.mensaje("Ingresando....", "Se ha guardado Correctamente", "success")
       this.refrescar();
       console.log("¡Se registró el cliente!");
     },
@@ -157,6 +159,7 @@ export default {
         registro: this.registro,
       };
       var data = await actualizarFachada(clienteBody.cedula, clienteBody);
+      this.mensaje("Actualizando....", "Se ha actualizado Correctamente", "success")
       this.visualizar(this.cedula);
     },
 
@@ -184,6 +187,19 @@ export default {
       this.fechaNacimiento = null;
       this.contrasenia = null;
       this.genero = null;
+    },
+
+    mensaje(titulo, mensaje, tipo) {
+      ElMessageBox.alert(mensaje, titulo, {
+        confirmButtonText: "Ok",
+        type: tipo,
+        position: "center",
+        customClass: "messageBox",
+        callback: () => {
+          // Acciones después de hacer clic en "Aceptar"
+          console.log("Mensaje aceptado");
+        },
+      });
     },
   },
 };
