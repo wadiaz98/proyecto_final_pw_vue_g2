@@ -7,7 +7,7 @@
       v-else
       type="text"
       v-model="cedula"
-      :disabled="this.funcion == 'visualizar'"
+      :disabled="this.funcion === 'visualizar' || this.tipo === 'C'"
     />
 
     <label for="">Nombre</label>

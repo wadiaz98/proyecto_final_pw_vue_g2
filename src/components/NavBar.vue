@@ -8,8 +8,9 @@
   </div>
   <div v-else class="menu">
     <router-link to="/cliente/vehiculos">Vehiculos Disponibles</router-link>
-    <router-link to="/registrarse">Registrarse</router-link>
-    <router-link to="/loggin">Iniciar sesión</router-link>
+    <router-link v-if="tipo !=='V'" to="/cliente/actualizar">Editar datos</router-link>
+    <router-link v-if="tipo ==='V'" to="/registrarse">Registrarse</router-link>
+    <router-link v-if="tipo ==='V'" to="/loggin">Iniciar sesión</router-link>
   </div>
 
 </template>
