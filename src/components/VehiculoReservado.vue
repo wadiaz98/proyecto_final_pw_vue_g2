@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import retirarVehiculoReservadoFachada from "@/helpers/clienteReserva";
+import {retirarVehiculoReservadoFachada ,obtenerReservaFachada} from "@/helpers/clienteReserva";
 export default {
   data() {
     return {
@@ -48,13 +48,10 @@ export default {
       extra: false, //Creará la fecha de retiro
     };
   },
-  updated: function(){
-    this.buscar()
-  },
   methods: {
     async buscar() {
-      var data = await buscarReservaFachada(this.reserva);
-
+      var data = await obtenerReservaFachada(this.reserva);
+      console.log(data)
       if (data !== undefined) {
         this.placa = data.placa;
         this.modelo = data.modelo;

@@ -17,11 +17,20 @@ const pago = async (tarjeta, body) => {
 };
 
 const retirarVehiculoReservado = async (numero) => {
-  const data = axios.put(
-    `http://localhost:8081/API/v1.0/AVIS/reservas/${numero}`
+  const data = axios.get(
+    `http://localhost:8081/API/v1.0/AVIS/reservas/retirar`, { params: {numero}}
   ).then(r => r.data);
   console.log(data)
+  return data
 };
+
+const obtenerReserva = async (numero) =>{
+  const data = axios.get(
+    `http://localhost:8081/API/v1.0/AVIS/reservas`, { params: {numero}}
+  ).then(r => r.data);
+  console.log(data)
+  return data
+}
 
 export const registrarFachada = async (body) => {
   return await registrar(body);
@@ -33,3 +42,7 @@ export const pagoFachada = async (tarjeta, body) => {
 export const retirarVehiculoReservadoFachada = async (numero) => {
   return await retirarVehiculoReservado(numero);
 };
+
+export const obtenerReservaFachada = async (numero) =>{
+  return await obtenerReserva(numero);
+}
