@@ -46,6 +46,11 @@ const routes = [
     component: () => import("@/pages/EmpleadoIngresarVehiculo.vue"),
   },
   {
+    path: "/cliente/pago",
+    component: () => import("@/pages/ClientePago.vue"),
+  },
+
+  {
     path: "/:pathMatch(.*)*",
     component: () => import("@/pages/PaginaInicio.vue"),
   },
