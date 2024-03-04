@@ -23,7 +23,7 @@
 <script>
 import { ElMessageBox } from "element-plus";
 
-import verificarUsuarioFachada from "@/helpers/clienteUsuario";
+import {verificarUsuarioFachada} from "@/helpers/clienteUsuario";
 
 export default {
   data() {
@@ -46,9 +46,6 @@ export default {
         contrasenia: this.contrasenia,
         password: this.contrasenia,
       };
-      console.log(clienteBody);
-      var data = await verificarUsuarioFachada(clienteBody);
-      console.log(data);
 
       if (this.cedula === "admin" && this.contrasenia === "admin") {
         this.$emit("cambio-tipo", "E");
@@ -56,7 +53,7 @@ export default {
         this.usuario.tipo = "E";
         await this.redireccionar();
       } else {
-        if (data) {
+        if (await verificarUsuarioFachada(clienteBody)) {
           this.$emit("cambio-tipo", "C");
           this.usuario.id = this.cedula;
           this.usuario.tipo = "C";

@@ -34,7 +34,7 @@ const eliminar = async (cedula) => {
 };
 const verificarUsuario = async (body) => {
   const data = axios
-    .get(`http://localhost:8081/API/v1.0/AVIS/clientes/verificar`, body)
+    .post(`http://localhost:8081/API/v1.0/AVIS/clientes/verificar`, body)
     .then((r) => r.data);
   return data;
 };
