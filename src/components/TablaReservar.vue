@@ -40,7 +40,7 @@
           <td>{{ vehiculo.valorDia }}</td>
 
           <td>
-            <button  @click="reservar()">Reservar</button>
+            <button  @click="reservar(vehiculo.placa)">Reservar</button>
           </td>
         </tr>
       </tbody>
@@ -89,12 +89,16 @@ export default {
       this.vehiculos = await buscarPorMarcaYModeloFachada(this.marca,this.modelo);
       this.teibol = this.vehiculos.length > 0;
     },
-    reservar(vehiculo) {
+    reservar(placa) {
       // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
       this.$router.push({
-        path: "/loggin",
+        path: "/clientes/reserva",
+        query: { placa:placa  },
+       
       });
+      console.log(placa)
     },
+
   },
 };
 </script>

@@ -6,20 +6,21 @@
 </template>
 
 <script>
-import { pagofachada } from "@helpers/clienteReserva.js";
+import { pagoFachada } from "@/helpers/clienteReserva.js";
+
 export default {
+  props: {
+    data: {},
+  },
   methods: {
     async pagar() {
-      const reserva = this.$route.query.reserva;
-      await pagofachada(this.tarjeta, reserva);
+      const reserva = data;
+      await pagoFachada(this.tarjeta, reserva);
       console.log("Se realizó correctamente el pago");
       /* VERIFICAR URL */
-      this.$router.push({
-        path: "/siguiente-pagina",
-        query: { tarjeta: this.tarjeta, reserva: reserva },
-      });
+      this.$emit("ver", this.tarjeta, reserva);
     },
   },
 };
 </script>
-<style></style>
+<style scoped></style>
