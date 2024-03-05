@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import {Vue }from "vue"
+import { Vue } from "vue";
 import navBar from "@/components/NavBar.vue";
 import router from "@/router/router";
 import { mount } from "@vue/test-utils";
@@ -48,7 +48,7 @@ export default {
       cedula: null,
     };
   },
-  updated(){
+  updated() {
     this.actualizarDatos();
   },
   methods: {
@@ -65,7 +65,6 @@ export default {
 </script>
 
 <style>
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -73,8 +72,9 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
 .router {
-  background: blue;
+  width:100%;
 }
 #logo {
   width: 20%;

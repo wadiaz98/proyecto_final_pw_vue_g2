@@ -14,21 +14,22 @@
 </template>
 
 <script scoped>
+import { ElMessageBox } from "element-plus";
 import { consultarDisponibilidadFachada } from "@/helpers/clienteReserva.js";
 export default {
   props: {
-    placaRecibida:{},
+    placaRecibida: {},
   },
   data() {
     return {
-      placa:null,
+      placa: null,
       cedula: null,
       fechaInicio: null,
       fechaFin: null,
     };
   },
-  mounted(){
-   this.placa=this.placaRecibida
+  mounted() {
+    this.placa = this.placaRecibida;
   },
   methods: {
     async reservar() {
@@ -36,14 +37,43 @@ export default {
         cedula: this.cedula,
         fechaInicio: this.fechaInicio,
         fechaFin: this.fechaFin,
+        placa: this.placa,
       };
+      console.log(clienteBody);
       // VERIFICAR EL RETORNO. SI DEVUELVE CERO ES PORQUE NO SE PUEDE RESERVAR
       const valor = await consultarDisponibilidadFachada(clienteBody);
-      if (valor != 0) {
+      console.log(valor);
+      if (valor.disponibilidad) {
         console.log("¡Se puede reservar el vehículo!");
-        clienteBody.valorTotal = valor;
+        console.log(clienteBody);
+        this.mensaje(
+          "Reserva disponible",
+          "El valor a cancelar por esta reservación es de $" +
+            parseFloat(valor.valorReserva),
+          "success"
+        );
         this.$emit("ver", clienteBody);
+      } else {
+        /* MENSAJE: SELECCIONAR OTRA FECHA PARA RESERVAR */
+        this.mensaje(
+          "Fecha no disponible",
+          "Seleccione otra fecha para reservar. El vehículo se encuentra disponible a partir de " +
+            valor.valorReserva,
+          "error"
+        );
       }
+    },
+    mensaje(titulo, mensaje, tipo) {
+      ElMessageBox.alert(mensaje, titulo, {
+        confirmButtonText: "Ok",
+        type: tipo,
+        position: "center",
+        customClass: "messageBox",
+        callback: () => {
+          // Acciones después de hacer clic en "Aceptar"
+          console.log("Mensaje aceptado");
+        },
+      });
     },
   },
 };

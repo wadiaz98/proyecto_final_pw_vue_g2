@@ -2,15 +2,22 @@ import axios from "axios";
 
 const consultarDisponibilidad = async (body) => {
   const data = axios
-    .get(`http://localhost:8081/API/v1.0/AVIS/reservas`, body)
+    .post(`http://localhost:8081/API/v1.0/AVIS/reservas/fecha_disponibilidad`, body)
     .then((r) => r.data);
   console.log(data);
   return data;
 };
-/* REVISAR LA URL  */
-const pago = async (tarjeta, body) => {
+
+const reservar = async (body) => {
   const data = axios
-    .post(`http://localhost:8081/API/v1.0/AVIS/reservas/pago`, tarjeta, body)
+    .post(`http://localhost:8081/API/v1.0/AVIS/reservas`, body)
+    .then((r) => r.data);
+  console.log(data);
+  return data;
+};
+const cobro = async (body) => {
+  const data = axios
+    .post(`http://localhost:8081/API/v1.0/AVIS/reservas/cobro`, body)
     .then((r) => r.data);
   console.log(data);
   return data;
@@ -35,8 +42,11 @@ const obtenerReserva = async (numero) =>{
 export const consultarDisponibilidadFachada = async (body) => {
   return await consultarDisponibilidad(body);
 };
-export const pagoFachada = async (tarjeta, body) => {
-  return await pago(tarjeta, body);
+export const reservarFachada = async (body) => {
+  return await reservar(body);
+};
+export const cobroFachada = async (body) => {
+  return await cobro(body);
 };
 
 export const retirarVehiculoReservadoFachada = async (numero) => {

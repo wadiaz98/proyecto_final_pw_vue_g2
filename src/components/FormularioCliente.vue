@@ -226,7 +226,16 @@ label {
   grid-template-rows: repeat(2, 100px); /* Dos filas */
   gap: 10px; /* Espacio entre las celdas */
 }
-.item_large {
-  grid-column: span 2; /* El elemento ocupa dos columnas */
+
+button{
+  padding: auto;
+  background: #d32f2f;
+  color: white;
+  line-height: 150%;
+  font-size: 2vmin;
+  font-style: bold;
+  border: #d32f2f;
+  width: 10%;
+  margin: center;
 }
 </style>
