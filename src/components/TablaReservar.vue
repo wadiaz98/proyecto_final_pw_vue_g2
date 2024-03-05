@@ -40,7 +40,7 @@
           <td>{{ vehiculo.valorDia }}</td>
 
           <td>
-            <button  @click="reservar(vehiculo.placa)">Reservar</button>
+            <button v-if="sinRese"  @click="reservar(vehiculo.placa)">Reservar</button>
           </td>
         </tr>
       </tbody>
@@ -59,6 +59,9 @@ import {
   buscarModelosPorMarcaFachada,
 } from "@/helpers/clienteVehiculo.js";
 export default {
+  props:{
+    sinRese:{}
+  },
   data() {
     return {
       marca: null,

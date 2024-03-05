@@ -1,19 +1,42 @@
 <template>
-  <h1>Empleado Retira Vehículo</h1>
+  <h1>¿TIENE RESERVA?</h1>
   <button @click="reserva">Reserva</button>
   <button @click="sinReserva">Sin reserva</button>
-  <RetirarVehiculoReservado/>
+  <RetirarVehiculoReservado v-if="isReserva" />
+  <RetirarSinReserva v-if="isntReserva" />
 </template>
 
 <script>
 import { mensaje } from "@/helpers/mensaje";
-import RetirarVehiculoReservado from "@/components/VehiculoReservado.vue"
+import RetirarVehiculoReservado from "@/components/VehiculoReservado.vue";
+import RetirarSinReserva from "@/components/RetirarSinReserva.vue";
 export default {
-  components:{
-    RetirarVehiculoReservado
-  }
+  components: {
+    RetirarVehiculoReservado,
+    RetirarSinReserva,
+  },
+  data() {
+    return {
+      isReserva: false,
+      isntReserva: false,
+    };
+  },
 
-}
+  methods: {
+    reserva() {
+      this.isreserva = true;
+      this.isntreserva = false;
+      console.log(this.isntReserva);
+      console.log(this.isReserva);
+    },
+    sinReserva() {
+      this.isntReserva = true;
+      this.isreserva = false;
+      console.log(this.isntReserva);
+      console.log(this.isReserva);
+    },
+  },
+};
 </script>
 
 <style scoped>
