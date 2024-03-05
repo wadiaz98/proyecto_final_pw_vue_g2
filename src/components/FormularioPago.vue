@@ -1,8 +1,8 @@
 <template>
   <h1>PAGAR LA RESERVACIÓN</h1>
   <label for="">Ingrese su número de tarjeta</label>
-  <input type="text" v-model="tarjeta" />
-  <button @click="pagar">Pagar</button>
+  <input type="text" v-model="numeroTarjeta" />
+  <button @click="reservar">Pagar</button>
 </template>
 
 <script>
@@ -35,16 +35,24 @@ export default {
     console.log(this.reserva)
   },
   methods: {
-    async pagar() {
+    async reservar() {
       const reservaFinal = await reservarFachada(this.reserva);
+      
+      console.log(reservaFinal)
       console.log("Se realizó correctamente la reserva");
       const clienteBody = {
+        numeroTarjeta: this.numeroTarjeta,
+        reserva: reservaFinal.numero,
+        fecha:null, 
+      };
+      const clienteB = {
         numeroTarjeta: this.numeroTarjeta,
         reserva: reservaFinal,
         fecha:null, 
       };
-      await cobroFachada(clienteBody); 
-      this.$emit("ver", clienteBody);
+      const cobro = await cobroFachada(clienteBody); 
+      console.log(clienteB);
+      this.$emit("ver", clienteB);
     },
   },
 };

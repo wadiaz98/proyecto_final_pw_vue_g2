@@ -2,11 +2,11 @@
   <h1>SU RESERVA SE REALIZÓ CORRECTAMENTE</h1>
   <div class="container">
     <label for="">No. Reserva</label>
-    <p>{{ id }}</p>
-    <label for="">/Fecha de cobro:</label>
+    <p>{{ numero }}</p>
+    <label for="">Fecha de cobro:</label>
     <p>{{ fechaCobro }}</p>
     <label for="">Pago con la tarjeta</label>
-    <p>{{ tarjeta }}</p>
+    <p>{{ numeroTarjeta }}</p>
     <label for="">Valor cancelado</label>
     <p>{{ valorTotal }}</p>
   </div>
@@ -14,29 +14,31 @@
 </template>
 
 <script>
+import { obtenerCobroFachada } from '@/helpers/clienteReserva';
 export default {
   props: {
     data: {},
   },
   data() {
     return {
-      cobro:{
-      reserva:null,
-      numerotarjeta: null,
-      fecha:null
+      cobro: {
+        reserva: null,
+        numeroTarjeta: null,
+        fecha: null,
       },
-      id:null,
-      tarjeta:null,
-     valorTotal:null,
-     fechaCobro:null,
+      numero: null,
+      numeroTarjeta: null,
+      valorTotal: null,
+      fechaCobro: null,
     };
   },
   mounted() {
-    this.cobro = data; /* Recibiendo los datos del padre */
-    this.id = this.cobro.reserva.id;
-    this.tarjeta = this.cobro.tarjeta;
-    this.valorTotal=this.cobro.reserva.total;
-    this.fechaCobro= this.cobro.fecha;
+    this.cobro = this.data; /* Recibiendo los datos del padre */
+    console.log(this.cobro);
+    this.numero = this.cobro.reserva.numero;
+    this.numeroTarjeta = this.cobro.numeroTarjeta;
+    this.valorTotal = this.cobro.reserva.total;
+    this.fechaCobro = new Date();
 
   },
   methods: {
@@ -45,6 +47,10 @@ export default {
         path: "/inicio",
       });
     },
+    async getCobro(){
+   
+
+    }
   },
 };
 </script>
