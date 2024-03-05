@@ -1,5 +1,5 @@
 <template>
-  <h1>Buscar Vehículo</h1>
+  <h1>SELECCIONE UNA MARCA</h1>
   <div class="buscar">
     <label>Marca:</label>
     <select v-model="marca" id="cars" @change="buscarVehiculo">

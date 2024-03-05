@@ -1,5 +1,5 @@
 <template>
-  <h1>CREE SU CUENTA AVIS</h1>
+  <h1>ACTUALIZE LOS DATOS DE CLIENTE</h1>
   <RegistroCliente class="registro" v-if="this.cedula !== null" tipo="C" funcion="actualizar" :clave="cedula"></RegistroCliente>
 </template>
 

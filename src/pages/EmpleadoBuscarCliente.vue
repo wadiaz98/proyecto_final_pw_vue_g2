@@ -1,5 +1,5 @@
 <template>
-  <h1>Empleado buscar Cliente</h1>
+  <h1>SELECCIONE UN APELLIDO</h1>
   <div class="buscar">
     <label>Apellido:</label>
     <input type="text" name="" v-model="apellido" />

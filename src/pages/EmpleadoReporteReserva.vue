@@ -1,5 +1,5 @@
 <template>
-  <h1>Buscar Vehículo</h1>
+  <h1>SELECCIONE LAS FECHAS</h1>
   <div class="buscar">
     <label>Fecha inicio:</label>
     <input type="datetime-local" v-model="fechaInicio" />

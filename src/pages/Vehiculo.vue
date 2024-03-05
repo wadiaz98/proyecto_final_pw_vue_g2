@@ -1,5 +1,5 @@
 <template>
-  <h1>Actualizar vehículo</h1>
+  <h1>VISUALIZAR VEHICULO</h1>
   <RegistroVehiculo class="registro" v-if="this.placa !== null" funcion="visualizar" :clave="placa"></RegistroVehiculo>
 </template>
 

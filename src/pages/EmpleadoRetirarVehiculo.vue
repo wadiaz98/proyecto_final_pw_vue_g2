@@ -1,5 +1,7 @@
 <template>
   <h1>Empleado Retira Vehículo</h1>
+  <button @click="reserva">Reserva</button>
+  <button @click="sinReserva">Sin reserva</button>
   <RetirarVehiculoReservado/>
 </template>
 
