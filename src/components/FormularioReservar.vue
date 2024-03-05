@@ -14,42 +14,42 @@
 </template>
 
 <script scoped>
-import { registrarFachada } from "@/helpers/clienteReserva.js";
+import { consultarDisponibilidadFachada } from "@/helpers/clienteReserva.js";
 export default {
+  props: {
+    placaRecibida:{},
+  },
   data() {
     return {
+      placa:null,
       cedula: null,
-      placa: null,
       fechaInicio: null,
       fechaFin: null,
     };
+  },
+  mounted(){
+   this.placa=this.placaRecibida
   },
   methods: {
     async reservar() {
       const clienteBody = {
         cedula: this.cedula,
-        placa: this.placa,
         fechaInicio: this.fechaInicio,
         fechaFin: this.fechaFin,
       };
       // VERIFICAR EL RETORNO. SI DEVUELVE CERO ES PORQUE NO SE PUEDE RESERVAR
-      const valor = await registrarFachada(clienteBody);
-      if (valorTotal != 0) {
+      const valor = await consultarDisponibilidadFachada(clienteBody);
+      if (valor != 0) {
         console.log("¡Se puede reservar el vehículo!");
         clienteBody.valorTotal = valor;
-        this.$router.push({
-          /* REVISAR URL */
-          path: "/clientes/pago",
-          query: { reserva: clienteBody },
-        });
+        this.$emit("ver", clienteBody);
       }
     },
   },
 };
 </script>
 
-<style>
-
+<style scoped>
 input {
   width: 100%;
 }
