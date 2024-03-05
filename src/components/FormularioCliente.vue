@@ -68,12 +68,14 @@
     </div>
     <div v-if="funcion === 'visualizar'" class="otros">
       <h6 class="item_large">Lea nuestros términos y condiciones</h6>
-      <button @click="volver()">Volver</button>
+      <button v-if="tipo === 'C'" @click="inicio()">Volver</button>
+      <button v-else @click="volver()">Volver</button>
       <button @click="actualizar()">Actualizar</button>
     </div>
     <div v-if="funcion === 'actualizar'" class="otros">
       <h6 class="item_large">Lea nuestros términos y condiciones</h6>
-      <button @click="volver()">Volver</button>
+      <button v-if="tipo === 'C'" @click="inicio()">Volver</button>
+      <button v-else @click="volver()">Volver</button>
       <button @click="guardarCambios()">Guardar Cambios</button>
     </div>
   </div>
@@ -166,11 +168,18 @@ export default {
       };
       var data = await actualizarFachada(clienteBody.cedula, clienteBody);
       mensaje("Actualizando....", "Se ha Actualizado Correctamente", "success");
-      this.visualizar(this.cedula);
+      if (this.tipo === "C") {
+        this.inicio();
+      } else {
+        this.visualizar(this.cedula);
+      }
     },
 
     volver() {
       this.$router.push({ path: "/empleados/clientes" });
+    },
+    inicio() {
+      this.$router.push({ path: "/inicio" });
     },
     actualizar() {
       // Lógica para actualizar el vehículo, por ejemplo: redirigir a una página de actualización con la información del vehículo
@@ -210,8 +219,8 @@ label {
   text-align: left;
 }
 
-button{
-    width: 50%;
+button {
+  width: 50%;
 }
 
 .otros {
@@ -223,5 +232,4 @@ button{
 .item_large {
   grid-column: span 2; /* El elemento ocupa dos columnas */
 }
-
 </style>

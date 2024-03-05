@@ -108,7 +108,7 @@ label {
   color: black;
 }
 .container {
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   width: 45%;

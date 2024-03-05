@@ -14,6 +14,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.registro {
+  margin: auto;
+  width: 80%;
+}
 </style>
