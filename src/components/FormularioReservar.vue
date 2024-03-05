@@ -54,6 +54,8 @@ export default {
             parseFloat(valor.valorReserva),
           "success"
         );
+        console.log("desde formulario reservar " )
+        console.log( clienteBody)
         this.$emit("ver", clienteBody);
       } else {
         /* MENSAJE: SELECCIONAR OTRA FECHA PARA RESERVAR */

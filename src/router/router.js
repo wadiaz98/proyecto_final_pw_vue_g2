@@ -66,10 +66,17 @@ const routes = [
     path: "/clientes/reserva",
     component: () => import("@/pages/ClienteReservar.vue"),
   }, 
+
+  {
+    path: "/empleados/reporte",
+    component: () => import("@/pages/EmpleadoReporteReserva.vue"),
+  }, 
   {
     path: "/:pathMatch(.*)*",
     component: () => import("@/pages/PaginaInicio.vue"),
   },
+  
+
 ];
 
 const router = createRouter({ history: createWebHashHistory(), routes });
