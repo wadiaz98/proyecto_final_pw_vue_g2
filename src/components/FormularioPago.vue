@@ -9,7 +9,7 @@
 /* REcibe las datos del input del componente anterior */
 import { reservarFachada } from "@/helpers/clienteReserva.js";
 /* Tarjeta y el id de reserva*/
-import {cobroFachada} from "@/helpers/clienteReserva.js";
+import { cobroFachada } from "@/helpers/clienteReserva.js";
 
 export default {
   props: {
@@ -18,23 +18,32 @@ export default {
   //DATOS DEL COBRO
   data() {
     return {
-     tarjeta: null,
-     id: null,
+      reserva: {
+        placa: null,
+        cedula: null,
+        fechaInicio: null,
+        fechaFin: null,
+      },
+      numeroTarjeta: null,
 
     };
+
+  },
+  mounted() {
+    this.reserva = this.data; /* Recibiendo los datos del padre */
   },
   methods: {
     async pagar() {
-      const reserAux = data;
-      const reservaFinal =await reservarFachada(reserva);
+      const reservaFinal = await reservarFachada(this.reserva);
       console.log("Se realizó correctamente la reserva");
       const clienteBody = {
-        tarjeta: this.tarjeta,
-        id: reservaFinal.id,
+        numeroTarjeta: this.numeroTarjeta,
+        reserva: reservaFinal,
+        fecha:null, 
       };
-      await cobroFachada(clienteBody);
+      await cobroFachada(clienteBody); 
+      this.$emit("ver", clienteBody);
     },
-   
   },
 };
 </script>

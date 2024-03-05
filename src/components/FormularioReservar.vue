@@ -19,6 +19,7 @@ import { consultarDisponibilidadFachada } from "@/helpers/clienteReserva.js";
 export default {
   props: {
     placaRecibida: {},
+    cedulaRecibida:{}
   },
   data() {
     return {
@@ -30,6 +31,7 @@ export default {
   },
   mounted() {
     this.placa = this.placaRecibida;
+    this.cedula = this.cedulaRecibida;
   },
   methods: {
     async reservar() {
@@ -40,7 +42,7 @@ export default {
         placa: this.placa,
       };
       console.log(clienteBody);
-      // VERIFICAR EL RETORNO. SI DEVUELVE CERO ES PORQUE NO SE PUEDE RESERVAR
+     
       const valor = await consultarDisponibilidadFachada(clienteBody);
       console.log(valor);
       if (valor.disponibilidad) {

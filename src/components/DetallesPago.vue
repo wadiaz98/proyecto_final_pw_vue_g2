@@ -16,23 +16,28 @@
 <script>
 export default {
   props: {
-    tarjeta: {},
     data: {},
   },
   data() {
     return {
-      id: null,
-      tarjeta: null,
-      fechaCobro: null,
-      valorTotal: null,
+      cobro:{
+      reserva:null,
+      numerotarjeta: null,
+      fecha:null
+      },
+      id:null,
+      tarjeta:null,
+     valorTotal:null,
+     fechaCobro:null,
     };
   },
   mounted() {
-    const reserva = data;
-    tarjeta = tarjeta;
-    id = reserva.id;
-    fechaCobro = reserva.fechaInicio;
-    valorTotal = reserva.valorTotal;
+    this.cobro = data; /* Recibiendo los datos del padre */
+    this.id = this.cobro.reserva.id;
+    this.tarjeta = this.cobro.tarjeta;
+    this.valorTotal=this.cobro.reserva.total;
+    this.fechaCobro= this.cobro.fecha;
+
   },
   methods: {
     inicio() {

@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <FormularioReservarVue v-if="formRes" @ver="actualizarForm" :placaRecibida="this.placa"> </FormularioReservarVue>
+    <FormularioReservarVue v-if="formRes" @ver="actualizarForm" :placaRecibida="this.placa" :cedulaRecibida="dato"> </FormularioReservarVue>
     <FormularioPagoVue v-if="formPay" @ver="actualizarPay" :data="clienteBody"></FormularioPagoVue>
-    <DetallesPagoVue v-if="detaPay" :data="clienteBody" :tarjeta="tarjeta" ></DetallesPagoVue>
+    <DetallesPagoVue v-if="detaPay"  @ver="actualizarDetalle" :data="clienteBody"></DetallesPagoVue>
   </div>
 </template>
 
@@ -11,6 +11,7 @@ import DetallesPagoVue from "@/components/DetallesPago.vue";
 import FormularioPagoVue from "@/components/FormularioPago.vue";
 import FormularioReservarVue from "@/components/FormularioReservar.vue";
 export default {
+  props: ["dato"],
   components: {
     DetallesPagoVue,
     FormularioPagoVue,
@@ -18,6 +19,7 @@ export default {
   },
   mounted(){
     this.placa=this.$route.query.placa,
+    this.cedula = this.dato,
     console.log(this.placa)
   },
   data() {
@@ -27,6 +29,7 @@ export default {
       formPay: false,
       detaPay: false,
       clienteBody:null,
+      cobro: null,
     };
   },
   methods: {
@@ -37,6 +40,12 @@ export default {
     },
     actualizarPay(data) {
       this.clienteBody=data;
+      this.formPay = false;
+      this.detaPay = true;
+    },
+    actualizarDetalle(data) {
+      this.clienteBody=data;
+  
       this.formPay = false;
       this.detaPay = true;
     },
