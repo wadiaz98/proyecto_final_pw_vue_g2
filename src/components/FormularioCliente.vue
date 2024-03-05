@@ -235,7 +235,7 @@ button{
   font-size: 2vmin;
   font-style: bold;
   border: #d32f2f;
-  width: 10%;
+  width: 30%;
   margin: center;
 }
 </style>

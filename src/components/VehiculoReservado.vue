@@ -50,7 +50,7 @@ export default {
   methods: {
     async buscar() {
       
-      if(this.reserva === null){
+      if(this.reserva === null || this.reserva ===''){
         mensaje('Retiro', 'No ha ingresado el número de reserva', 'error')
       }else{
         var data = await obtenerReservaFachada(this.reserva);
