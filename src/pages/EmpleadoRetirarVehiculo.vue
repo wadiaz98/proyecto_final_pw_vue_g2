@@ -1,7 +1,7 @@
 <template>
   <h1>¿TIENE RESERVA?</h1>
-  <button @click="reserva">Reserva</button>
-  <button @click="sinReserva">Sin reserva</button>
+  <button @click="reserva()">Reserva</button>
+  <button @click="sinReserva()">Sin reserva</button>
   <RetirarVehiculoReservado v-if="isReserva" />
   <RetirarSinReserva v-if="isntReserva" />
 </template>
