@@ -159,11 +159,21 @@ export default {
         valorDia: this.valorDia,
         estado: this.estado,
       };
-      // INSERTA
-      await insertarVehiculoFachada(clienteBody);
-      this.mensaje("Guardando....", "Se ha guardado Correctamente", "success")
-      this.refrescar();
-      console.log("¡Se registró el cliente!");
+      var verificar = await buscarPorPlacaFachada(this.placa) !== null
+      console.log(verificar)
+      if (verificar){
+        this.mensaje("Error....", "La Placa ya existe en el sistema", "error");
+        this.refrescar();
+      } else {
+        // INSERTA
+        await insertarVehiculoFachada(clienteBody);
+        this.mensaje(
+          "Guardando....",
+          "Se ha guardado Correctamente",
+          "success"
+        );
+        this.refrescar();
+      }
     },
     async guardarCambios() {
       const clienteBody = {
@@ -181,7 +191,11 @@ export default {
         clienteBody.placa,
         clienteBody
       );
-      this.mensaje("Actualizando....", "Se ha Actualizado Correctamente", "success")
+      this.mensaje(
+        "Actualizando....",
+        "Se ha Actualizado Correctamente",
+        "success"
+      );
       await this.visualizar(this.placa);
     },
 
@@ -213,7 +227,7 @@ export default {
         query: { placa: placa },
       });
     },
-     mensaje(titulo, mensaje, tipo) {
+    mensaje(titulo, mensaje, tipo) {
       ElMessageBox.alert(mensaje, titulo, {
         confirmButtonText: "Ok",
         type: tipo,

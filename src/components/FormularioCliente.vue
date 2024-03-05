@@ -141,11 +141,19 @@ export default {
         /* VERIFICAR EL TIPO */
         registro: this.tipo,
       };
-      // INSERTA
+      var verificar = await consultarFachada(this.cedula) !== null
+      console.log(verificar)
+      if (verificar){
+        this.mensaje("Error....", "La cedula ya existe en el sistema", "error")
+        this.refrescar();
+      }else{
+        // INSERTA
       await registrarFachada(clienteBody);
       this.mensaje("Ingresando....", "Se ha guardado Correctamente", "success")
       this.refrescar();
       console.log("¡Se registró el cliente!");
+      }
+      
     },
     async guardarCambios() {
       const clienteBody = {
