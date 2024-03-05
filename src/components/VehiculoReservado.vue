@@ -6,7 +6,7 @@
       type="number"
       placeholder="Ingrese el número de reserva"
     />
-    <hr/>
+    <hr />
     <button @click="buscar">Buscar</button>
     <div v-if="crear">
       <label for="">Placa</label>
@@ -49,30 +49,44 @@ export default {
 
   methods: {
     async buscar() {
-      var data = await obtenerReservaFachada(this.reserva);
-      console.log(data);
-      if (data !== undefined) {
-        this.placa = data.placa;
-        this.modelo = data.modelo;
-        this.fechaInicio = data.fechaInicio;
-        this.fechaFin = data.fechaFin;
-        this.cedula = data.cedula;
-        this.estado = data.estado;
-        this.crear = true;
+      
+      if(this.reserva === null){
+        mensaje('Retiro', 'No ha ingresado el número de reserva', 'error')
+      }else{
+        var data = await obtenerReservaFachada(this.reserva);
+        if(data.cedula !== undefined){
+          console.log(data);
+          if (data !== undefined) {
+            this.placa = data.placa;
+            this.modelo = data.modelo;
+            this.fechaInicio = data.fechaInicio;
+            this.fechaFin = data.fechaFin;
+            this.cedula = data.cedula;
+            this.estado = data.estado;
+            this.crear = true;
+          }
+        }else{
+          mensaje('Retiro', 'El número de reserva ingresado no existe', 'error')
+        }
+        
       }
+      
     },
     async retirar() {
-      var data = await obtenerReservaFachada(this.reserva);
-      await retirarVehiculoReservadoFachada(this.reserva);
-      this.estado = data.estado;
-      mensaje('Retiro', 'Se ha ejecutado el retiro exitosamente', 'success')
+      var data = await retirarVehiculoReservadoFachada(this.reserva);
+      if(data.includes('EXITO')){
+        mensaje('Retiro', 'Se ha ejecutado el retiro exitosamente', 'success')
+      }else{
+        mensaje('Retiro', data, 'error')
+      }
+      
     },
   },
 };
 </script>
 
 <style scoped>
-input{
+input {
   width: 47%;
   border-radius: 10px;
   text-align: center;
@@ -98,21 +112,20 @@ label {
   justify-content: center;
   align-items: center;
   width: 45%;
-
 }
 button {
   padding: auto;
-  background: red;
+  background: #d03425;
   color: white;
   line-height: 150%;
   font-size: 2vmin;
   font-style: bold;
-  border: red;
+  border: #d03425;
   width: 30%;
-  border-radius: 10px;
   margin: auto;
 }
-.idRetirar{
+.idRetirar {
+  line-height: 150%;
   width: 45%;
 }
 </style>
