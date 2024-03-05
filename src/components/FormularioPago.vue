@@ -31,6 +31,8 @@ export default {
   },
   mounted() {
     this.reserva = this.data; /* Recibiendo los datos del padre */
+    console.log("desde componente formulario pago")
+    console.log(this.reserva)
   },
   methods: {
     async pagar() {
