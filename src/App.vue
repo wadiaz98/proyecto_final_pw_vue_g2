@@ -23,6 +23,7 @@
         class="router"
         @cambioTipo="actualizarTipo"
         @cambioCedula="actualizarCedula"
+        :dato="cedula"
       />
       <footer>
         <h1>© 2024 Grupo 2, Programación Web</h1>
@@ -32,10 +33,8 @@
 </template>
 
 <script>
-import { Vue } from "vue";
 import navBar from "@/components/NavBar.vue";
 import router from "@/router/router";
-import { mount } from "@vue/test-utils";
 export default {
   name: "App",
   components: {
@@ -49,7 +48,6 @@ export default {
     };
   },
   updated() {
-    this.actualizarDatos();
   },
   methods: {
     actualizarTipo(nuevoTipo) {
@@ -60,6 +58,9 @@ export default {
       console.log("desde la app.vue " + cedulaNueva);
       this.cedula = cedulaNueva;
     },
+    actualizarHijos(){
+      this.$refs.router-view.getcedula(cedula);
+    }
   },
 };
 </script>

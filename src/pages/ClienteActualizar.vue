@@ -15,15 +15,14 @@ export default {
   components: {
     RegistroCliente,
   },
+  props: ["dato"],
   data() {
     return {
-      cedula: null,
+      cedula: this.dato,
     };
   },
-  data() {
-    return {
-      cedula: null,
-    };
+  mounted() {
+    console.log(this.dato);
   },
 };
 </script>
