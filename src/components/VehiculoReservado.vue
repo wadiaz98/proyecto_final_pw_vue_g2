@@ -87,7 +87,7 @@ export default {
 
 <style scoped>
 input {
-  width: 47%;
+  width: 100%;
   border-radius: 10px;
   text-align: center;
 }
@@ -111,7 +111,7 @@ label {
   display: grid;
   justify-content: center;
   align-items: center;
-  width: 45%;
+  width:100%;
 }
 
 .idRetirar {
