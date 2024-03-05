@@ -68,7 +68,7 @@ export default {
     mensajeAlerta() {
       ElMessageBox.alert("Bienvenido", "Se redireccionara a inicio", {
         confirmButtonText: "Ok",
-        type: "error",
+        type: "success",
         position: "center",
         customClass: "messageBox",
         callback: () => {
@@ -89,7 +89,7 @@ export default {
           customClass: "messageBox",
           callback: () => {
             // Acciones después de hacer clic en "Aceptar"
-            this.$emit("cambio-tipo", "C");
+            this.$emit("cambio-tipo",  nuevo = {tipo:"C",cedula:this.cedula});
             this.usuario.id = this.cedula;
             this.usuario.tipo = "C";
             this.redireccionar();

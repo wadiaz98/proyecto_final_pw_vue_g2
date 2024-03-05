@@ -16,12 +16,12 @@
             alt="Cannot access to resource"
         /></router-link>
 
-        <navBar id="idNavBar" :tipo= "tipo" />
+        <navBar id="idNavBar" :tipo="tipo" />
       </header>
 
-      <router-view  class="router" @cambio-tipo="actualizarTipo" />
+      <router-view class="router" @cambio-tipo="actualizarTipo" />
 
-    <!--   <mensaje :data="true" /> -->
+      <!--   <mensaje :data="true" /> -->
 
       <footer>
         <h1>© 2024 Grupo 2, Programación Web</h1>
@@ -34,7 +34,7 @@
 import navBar from "@/components/NavBar.vue";
 import router from "@/router/router";
 import mensaje from "@/components/Mensaje.vue";
-import { mount } from '@vue/test-utils';
+import { mount } from "@vue/test-utils";
 export default {
   name: "App",
   components: {
@@ -42,19 +42,23 @@ export default {
     router,
     mensaje,
   },
-    data() {
+  data() {
     return {
       tipo: "V",
-      
+      cedula: null,
     };
   },
-   methods: {
+  methods: {
     actualizarTipo(nuevoTipo) {
-      this.tipo = nuevoTipo;
-    }
-    }
-
-
+      console.log(nuevotipo);
+      this.tipo = nuevoTipo.tipo;
+      this.cedula = tipo.cedula;
+      console.log(nuevotipo);
+    },
+    emitirDatos() {
+      EventBus.$emit("cedula", this.cedula);
+    },
+  },
 };
 </script>
 

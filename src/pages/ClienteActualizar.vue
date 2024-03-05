@@ -15,14 +15,24 @@ export default {
   components: {
     RegistroCliente,
   },
-
+  data() {
+    return {
+      cedula: null,
+    };
+  },
+  mounted() {
+    EventBus.$on("cedula", (nuevosDatos) => {
+      this.cedula = nuevosDatos;
+      console.log("la clave que llego es " + cedula)
+    });
+  },
   data() {
     return {
       cedula: this.$route.query.usuario.id,
     };
   },
   beforeCreate() {
-    this.cedula = this.$route.query.usuario.id; 
+    this.cedula = this.$route.query.usuario.id;
   },
 };
 </script>
