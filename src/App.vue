@@ -16,11 +16,10 @@
             alt="Cannot access to resource"
         /></router-link>
 
-        <navBar id="idNavBar" :tipo= "tipo" />
+        <navBar id="idNavBar" :tipo="tipo" />
       </header>
 
-      <router-view  class="router" @cambio-tipo="actualizarTipo" />
-
+      <router-view class="router" @cambio-tipo="actualizarTipo" />
       <footer>
         <h1>© 2024 Grupo 2, Programación Web</h1>
       </footer>
@@ -38,19 +37,23 @@ export default {
     navBar,
     router,
   },
-    data() {
+  data() {
     return {
       tipo: "V",
-      
+      cedula: null,
     };
   },
-   methods: {
+  methods: {
     actualizarTipo(nuevoTipo) {
-      this.tipo = nuevoTipo;
-    }
-    }
-
-
+      console.log(nuevotipo);
+      this.tipo = nuevoTipo.tipo;
+      this.cedula = tipo.cedula;
+      console.log(nuevotipo);
+    },
+    emitirDatos() {
+      EventBus.$emit("cedula", this.cedula);
+    },
+  },
 };
 </script>
 
