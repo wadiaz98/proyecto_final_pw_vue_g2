@@ -22,6 +22,15 @@ const cobro = async (body) => {
   console.log(data);
   return data;
 };
+const obtenerCobro = async (body) => {
+  const data = axios
+    .get(`http://localhost:8081/API/v1.0/AVIS/reservas/cobro/${body}`)
+    .then((r) => r.data);
+  console.log(data);
+  return data;
+};
+
+
 
 const retirarVehiculoReservado = async (numero) => {
   const data = axios.get(
@@ -55,4 +64,8 @@ export const retirarVehiculoReservadoFachada = async (numero) => {
 
 export const obtenerReservaFachada = async (numero) =>{
   return await obtenerReserva(numero);
+}
+
+export const obtenerCobroFachada = async (body) =>{
+  return await obtenerCobro(body);
 }

@@ -45,7 +45,6 @@ export default {
     },
     actualizarDetalle(data) {
       this.clienteBody=data;
-  
       this.formPay = false;
       this.detaPay = true;
     },
