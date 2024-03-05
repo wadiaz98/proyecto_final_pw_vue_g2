@@ -22,7 +22,7 @@
           <th>Año</th>
           <th>Estado</th>
           <th>Valor Diario</th>
-          <th>Reservar</th>
+          <th v-if="sinRese"  >Reservar</th>
         </tr>
       </thead>
       <tbody>

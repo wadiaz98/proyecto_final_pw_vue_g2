@@ -1,6 +1,6 @@
 <template>
   <h1>ACTUALIZE LOS DATOS DE CLIENTE</h1>
-  <RegistroCliente class="registro" v-if="this.cedula !== null" tipo="C" funcion="actualizar" :clave="cedula"></RegistroCliente>
+  <RegistroCliente class="registro" v-if="this.cedula !== null" tipo="E" funcion="actualizar" :clave="cedula"></RegistroCliente>
 </template>
 
 
