@@ -5,6 +5,7 @@
 
 
 <script>
+import { mensaje } from "@/helpers/mensaje";
 import RegistroVehiculo from "@/components/FormularioVehiculo.vue";
 export default {
   components: {

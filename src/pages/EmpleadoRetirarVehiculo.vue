@@ -4,6 +4,7 @@
 </template>
 
 <script>
+import { mensaje } from "@/helpers/mensaje";
 import RetirarVehiculoReservado from "@/components/VehiculoReservado.vue"
 export default {
   components:{

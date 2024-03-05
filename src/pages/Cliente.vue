@@ -5,6 +5,7 @@
 
 
 <script>
+import { mensaje } from "@/helpers/mensaje";
 import RegistroCliente from "@/components/FormularioCliente.vue";
 export default {
   components: {
@@ -13,10 +14,7 @@ export default {
 
   data() {
     return {
-       
         cedula: this.$route.query.cedula,
-
-        
     };
   },
   beforeCreate() {

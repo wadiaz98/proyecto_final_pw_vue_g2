@@ -26,6 +26,7 @@
 </template>
 
 <script>
+
 import router from "@/router/router";
 export default {
   props: {

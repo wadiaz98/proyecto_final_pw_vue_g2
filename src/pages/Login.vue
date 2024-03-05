@@ -22,8 +22,12 @@
 
 <script>
 import { ElMessageBox } from "element-plus";
+import { mensaje } from "@/helpers/mensaje";
 
-import { verificarUsuarioFachada } from "@/helpers/clienteUsuario";
+import {
+  verificarUsuarioFachada,
+  consultarFachada,
+} from "@/helpers/clienteUsuario";
 
 export default {
   data() {
@@ -43,40 +47,50 @@ export default {
       /* VERIFICAR LOS ATRIBUTOS EN EL BACK END */
       const clienteBody = {
         cedula: this.cedula,
-        contrasenia: this.contrasenia,
         password: this.contrasenia,
       };
-
-      if (this.cedula === "admin" && this.contrasenia === "admin") {
+      if (
+        this.cedula === null ||
+        this.contrasenia === null ||
+        this.cedula === "" ||
+        this.contrasenia === ""
+      ) {
+        mensaje("Error....", "No puedes dejar los campos vacios", "error");
+      } else if (this.cedula === "admin" && this.contrasenia === "admin") {
+        mensaje(
+          "Iniciando Sesion...",
+          "Iniciando Sesion como Administrador",
+          "success"
+        );
         this.$emit("cambio-tipo", "E");
         this.usuario.id = "admin";
         this.usuario.tipo = "E";
         await this.redireccionar();
       } else {
-        if (await verificarUsuarioFachada(clienteBody)) {
-          this.mensajeOK();
-        } else {
-          this.mensajeAlerta();
+        try {
+          var verificar = (await consultarFachada(this.cedula)) !== null;
+          console.log(verificar);
+          if (verificar) {
+            var autenticar = await verificarUsuarioFachada(clienteBody);
+            if (autenticar) {
+              this.mensajeOK();
+            } else {
+              mensaje("Iniciando Sesion...", "Contraseña equivocada", "error");
+            }
+          } else {
+            mensaje("Iniciando Sesion...", "El Usuario No existe", "error");
+          }
+        } catch {
+          mensaje("Iniciando Sesion...", "Revisa tus credenciales y vuelve a intenta", "error");
         }
       }
     },
     redireccionar() {
-      console.log(this.usuario)
-      this.$router.push({ path: "/inicio" , usuario: this.usuario});
+      console.log(this.usuario);
+      this.$router.push({ path: "/inicio", usuario: this.usuario });
     },
 
-    mensajeAlerta() {
-      ElMessageBox.alert("Bienvenido", "Se redireccionara a inicio", {
-        confirmButtonText: "Ok",
-        type: "success",
-        position: "center",
-        customClass: "messageBox",
-        callback: () => {
-          // Acciones después de hacer clic en "Aceptar"
-          console.log("Mensaje aceptado");
-        },
-      });
-    },
+
 
     mensajeOK() {
       ElMessageBox.alert(
@@ -116,8 +130,8 @@ h1 {
   font-style: italic;
 }
 
-button{
-    width: 50%;
+button {
+  width: 50%;
   height: 40px;
 }
 .container {

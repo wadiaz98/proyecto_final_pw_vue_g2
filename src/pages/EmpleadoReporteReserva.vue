@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import { mensaje } from "@/helpers/mensaje";
 import {
   obtenerReporteReservasFachada,
 } from "@/helpers/clienteReserva";

@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { mensaje } from "@/helpers/mensaje";
 export default {
   data() {
     return {

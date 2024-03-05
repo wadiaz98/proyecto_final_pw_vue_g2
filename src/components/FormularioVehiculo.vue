@@ -159,7 +159,7 @@ export default {
       var verificar = (await buscarPorPlacaFachada(this.placa)) !== null;
       console.log(verificar);
       if (verificar) {
-        this.mensaje("Error....", "La Placa ya existe en el sistema", "error");
+        mensaje("Guardando", "revisa la placa y vuelve intentar", "error");
         this.refrescar();
       } else {
         // INSERTA

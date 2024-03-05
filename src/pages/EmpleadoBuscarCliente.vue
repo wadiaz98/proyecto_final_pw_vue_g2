@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import { mensaje } from "@/helpers/mensaje";
 import {
   consultarTodosFachada,
   eliminarFachada,

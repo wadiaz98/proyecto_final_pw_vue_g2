@@ -10,7 +10,7 @@
 import { reservarFachada } from "@/helpers/clienteReserva.js";
 /* Tarjeta y el id de reserva*/
 import { cobroFachada } from "@/helpers/clienteReserva.js";
-
+import { mensaje } from "@/helpers/mensaje";
 export default {
   props: {
     data: {},

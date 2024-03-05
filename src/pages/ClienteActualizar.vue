@@ -10,6 +10,7 @@
 
 
 <script>
+import { mensaje } from "@/helpers/mensaje";
 import RegistroCliente from "@/components/FormularioCliente.vue";
 export default {
   components: {

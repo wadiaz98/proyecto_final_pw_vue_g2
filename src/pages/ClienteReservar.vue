@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mensaje } from "@/helpers/mensaje";
 import DetallesPagoVue from "@/components/DetallesPago.vue";
 import FormularioPagoVue from "@/components/FormularioPago.vue";
 import FormularioReservarVue from "@/components/FormularioReservar.vue";
