@@ -77,7 +77,7 @@ export const obtenerReservaFachada = async (numero) => {
 export const obtenerReporteReservasFachada = async (fechaInicio, fechaFin) => {
   return await obtenerReporteReservas(fechaInicio, fechaFin);
 
-
+}
 export const obtenerCobroFachada = async (body) =>{
   return await obtenerCobro(body);
 
