@@ -17,7 +17,7 @@ const consultar = async (cedula) => {
   const data = axios
     .get(`http://localhost:8081/API/v1.0/AVIS/clientes/cedula/${cedula}`)
     .then((r) => r.data);
-  console.log(data);
+  console.log("data: "+data);
   return data;
 };
 const actualizar = async (cedula, body) => {

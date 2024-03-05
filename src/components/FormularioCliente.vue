@@ -140,7 +140,7 @@ export default {
         /* VERIFICAR EL TIPO */
         registro: this.tipo,
       };
-      var verificar = (await consultarFachada(this.cedula)) !== null;
+      var verificar = (await consultarFachada(this.cedula)) !== "";
       console.log(verificar);
       if (verificar) {
         mensaje("Error....", "La cedula ya existe en el sistema", "error");

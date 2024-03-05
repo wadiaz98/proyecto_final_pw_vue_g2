@@ -156,7 +156,7 @@ export default {
         valorDia: this.valorDia,
         estado: this.estado,
       };
-      var verificar = (await buscarPorPlacaFachada(this.placa)) !== null;
+      var verificar = (await buscarPorPlacaFachada(this.placa)) !== "";
       console.log(verificar);
       if (verificar) {
         mensaje("Guardando", "revisa la placa y vuelve intentar", "error");
