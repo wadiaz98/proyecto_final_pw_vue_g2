@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import { ElMessageBox } from "element-plus";
 import {
   buscarPorMarcaFachada,
   obtenerMarcasFachada,
@@ -78,28 +77,15 @@ export default {
     actualizar(vehiculo) {
       // Lógica para actualizar el vehículo, por ejemplo: redirigir a una página de actualización con la información del vehículo
       this.$router.push({
-        path: "/actualizar_vehiculo",
+        path: "/empleados/vehiculos/actualizar",
         query: { placa: vehiculo.placa },
       });
     },
     visualizar(vehiculo) {
       // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
       this.$router.push({
-        path: "/vehiculo",
+        path: "/empleados/vehiculos/visualizar",
         query: { placa: vehiculo.placa },
-      });
-    },
-
-    mensaje(data) {
-      ElMessageBox.alert(data, "Eliminando Vehiculo...", {
-        confirmButtonText: "Ok",
-        type: "error",
-        position: "center",
-        customClass: "messageBox",
-        callback: () => {
-          // Acciones después de hacer clic en "Aceptar"
-          console.log("Mensaje aceptado");
-        },
       });
     },
   },

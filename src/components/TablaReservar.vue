@@ -92,7 +92,7 @@ export default {
     reservar(placa) {
       // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
       this.$router.push({
-        path: "/clientes/reserva",
+        path: "/clientes/reservar",
         query: { placa:placa  },
        
       });

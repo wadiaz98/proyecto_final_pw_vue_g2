@@ -6,27 +6,27 @@ const routes = [
     component: () => import("@/pages/PaginaInicio.vue"),
   },
   {
-    path: "/registrarse",
+    path: "/clientes/registrarse",
     component: () => import("@/pages/ClienteRegistrar.vue"),
   },
   {
-    path: "/loggin",
+    path: "/iniciar",
     component: () => import("@/pages/Login.vue"),
   },
   {
-    path: "/logout",
+    path: "/salir",
     component: () => import("@/pages/LogOut.vue"),
   },
   {
-    path: "/cliente/vehiculos",
+    path: "/clientes/vehiculos",
     component: () => import("@/pages/ClienteListaVehiculos.vue"),
   },
   {
-    path: "/cliente/actualizar",
+    path: "/cliente/datos",
     component: () => import("@/pages/ClienteActualizar.vue")
   },
   {
-    path: "/buscar",
+    path: "/empleados/vehiculos",
     component: () => import("@/pages/EmpleadoBuscarVehiculo.vue"),
   },
   {
@@ -34,19 +34,19 @@ const routes = [
     component: () => import("@/pages/EmpleadoBuscarCliente.vue"),
   },
   {
-    path: "/actualizar_vehiculo",
+    path: "/empleados/vehiculos/actualizar",
     component: () => import("@/pages/EmpleadoActualizarVehiculo.vue"),
   },
   {
-    path: "/vehiculo",
+    path: "/empleados/vehiculos/visualizar",
     component: () => import("@/pages/Vehiculo.vue"),
   },
   {
-    path: "/actualizar_cliente",
+    path: "/empleados/clientes/actualizar",
     component: () => import("@/pages/EmpleadoActualizarCliente.vue"),
   },
   {
-    path: "/cliente",
+    path: "/empleados/clientes/visualizar",
     component: () => import("@/pages/Cliente.vue"),
   },
   {
@@ -54,21 +54,21 @@ const routes = [
     component: () => import("@/pages/EmpleadoIngresarCliente.vue"),
   },
   {
-    path: "/empleados/vehiculo/nuevo",
+    path: "/empleados/vehiculos/nuevo",
     component: () => import("@/pages/EmpleadoIngresarVehiculo.vue"),
   },
  
   {
-    path: "/empleados/vehiculo/retirar",
+    path: "/empleados/reservas/retirar",
     component: () => import("@/pages/EmpleadoRetirarVehiculo.vue")
   },
   {
-    path: "/clientes/reserva",
+    path: "/clientes/reservar",
     component: () => import("@/pages/ClienteReservar.vue"),
   }, 
 
   {
-    path: "/empleados/reporte",
+    path: "/empleados/reservas/reporte",
     component: () => import("@/pages/EmpleadoReporteReserva.vue"),
   }, 
   {

@@ -192,12 +192,12 @@ export default {
     },
 
     volver() {
-      this.$router.push({ path: "/buscar" });
+      this.$router.push({ path: "/empleados/vehiculos" });
     },
     actualizar() {
       // Lógica para actualizar el vehículo, por ejemplo: redirigir a una página de actualización con la información del vehículo
       this.$router.push({
-        path: "/actualizar_vehiculo",
+        path: "/empleados/vehiculos/actualizar",
         query: { placa: this.placa },
       });
     },
@@ -215,7 +215,7 @@ export default {
     visualizar(placa) {
       // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
       this.$router.push({
-        path: "/vehiculo",
+        path: "/empleados/vehiculos/visualizar",
         query: { placa: placa },
       });
     },

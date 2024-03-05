@@ -176,14 +176,14 @@ export default {
     actualizar() {
       // Lógica para actualizar el vehículo, por ejemplo: redirigir a una página de actualización con la información del vehículo
       this.$router.push({
-        path: "/actualizar_cliente",
+        path: "/empleados/clientes/actualizar",
         query: { cedula: this.cedula },
       });
     },
     visualizar(cedula) {
       // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
       this.$router.push({
-        path: "/cliente",
+        path: "/empleados/clientes/visualizar",
         query: { cedula: cedula },
       });
     },

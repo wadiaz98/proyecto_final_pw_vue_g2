@@ -38,8 +38,7 @@
   </div>
 </template>
 
-<script scoped>
-import { ElMessageBox } from "element-plus";
+<script>
 import {
   consultarTodosFachada,
   eliminarFachada,
@@ -65,28 +64,15 @@ export default {
     actualizar(cedula) {
       // Lógica para actualizar el vehículo, por ejemplo: redirigir a una página de actualización con la información del vehículo
       this.$router.push({
-        path: "/actualizar_cliente",
+        path: "/empleados/clientes/actualizar",
         query: { cedula: cedula },
       });
     },
     visualizar(cedula) {
       // Lógica para visualizar el vehículo, por ejemplo: redirigir a una página de visualización con la información del vehículo
       this.$router.push({
-        path: "/cliente",
+        path: "/empleados/clientes/visualizar",
         query: { cedula: cedula },
-      });
-    },
-
-    mensaje(data) {
-      ElMessageBox.alert(data, "Eliminando Cliente...", {
-        confirmButtonText: "Ok",
-        type: "error",
-        position: "center",
-        customClass: "messageBox",
-        callback: () => {
-          // Acciones después de hacer clic en "Aceptar"
-          console.log("Mensaje aceptado");
-        },
       });
     },
   },

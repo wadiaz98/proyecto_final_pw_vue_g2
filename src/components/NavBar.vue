@@ -1,32 +1,39 @@
 <template>
   <div v-if="tipo === 'E'" class="menu">
-    <router-link to="/buscar">Buscar vehículo</router-link>
+    <router-link to="/empleados/vehiculos">Vehículos</router-link>
+    <router-link to="/empleados/vehiculos/nuevo">Nuevo Vehículo </router-link>
     <router-link to="/empleados/clientes">Clientes</router-link>
-    <router-link to="/empleados/clientes/nuevo">NuevoCliente</router-link>
-    <router-link to="/empleados/vehiculo/nuevo">Nuevo Vehículo </router-link>
-    <router-link to="/empleados/vehiculo/retirar">Retirar vehículo </router-link>
-    <router-link to="/empleados/reporte">Reporte Reservas</router-link>
-    <router-link to="/logout">Salir</router-link>
+    <router-link to="/empleados/clientes/nuevo">Nuevo Cliente</router-link>
+    <router-link to="/empleados/reservas/retirar"
+      >Retirar vehículo
+    </router-link>
+    <router-link to="/empleados/reservas/reporte">Reporte Reservas</router-link>
+    <router-link to="/salir">Salir</router-link>
   </div>
   <div v-else class="menu">
-    <router-link to="/cliente/vehiculos">Vehiculos Disponibles</router-link>
-    <router-link v-if="tipo !=='V'" to="/cliente/actualizar">Editar datos</router-link>
-    <router-link v-if="tipo ==='V'" to="/registrarse">Registrarse</router-link>
-    <router-link v-if="tipo ==='V'" to="/loggin">Iniciar sesión</router-link>
-    <router-link v-if="tipo !=='V'" to="/logout">Salir</router-link>
+    <router-link v-if="tipo !== 'V'" to="/clientes/vehiculos"
+      >Vehiculos Disponibles</router-link
+    >
+    <router-link v-if="tipo !== 'V'" to="/cliente/datos"
+      >Editar datos</router-link
+    >
+    <router-link v-if="tipo === 'V'" to="/clientes/registrarse"
+      >Registrarse</router-link
+    >
+    <router-link v-if="tipo === 'V'" to="/iniciar">Iniciar sesión</router-link>
+    <router-link v-if="tipo !== 'V'" to="/salir">Salir</router-link>
   </div>
-
 </template>
 
 <script>
 import router from "@/router/router";
 export default {
-  props:{
-    tipo:{
+  props: {
+    tipo: {
       default: "V",
       required: true,
       type: String,
-    }
+    },
   },
   components: {
     router,

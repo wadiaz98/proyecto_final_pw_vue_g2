@@ -8,13 +8,12 @@
   <body>
     <div class="container">
       <header>
-        <router-link class="home" to="/inicio"
-          ><img
-            to="/inicio"
-            id="logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Avis_logo.svg/1200px-Avis_logo.svg.png"
-            alt="Cannot access to resource"
-        /></router-link>
+        <img
+          id="logo"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Avis_logo.svg/1200px-Avis_logo.svg.png"
+          alt="Cannot access to resource"
+          @click="inicio"
+        />
 
         <navBar id="idNavBar" :tipo="tipo" />
       </header>
@@ -47,8 +46,7 @@ export default {
       cedula: null,
     };
   },
-  updated() {
-  },
+  updated() {},
   methods: {
     actualizarTipo(nuevoTipo) {
       console.log("desde la app.vue " + nuevoTipo);
@@ -58,14 +56,14 @@ export default {
       console.log("desde la app.vue " + cedulaNueva);
       this.cedula = cedulaNueva;
     },
-    actualizarHijos(){
-      this.$refs.router-view.getcedula(cedula);
+    inicio(){
+      this.$router.push({path: "/inicio"})
     }
   },
 };
 </script>
 
-<style>
+<style >
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -74,9 +72,6 @@ export default {
   color: #2c3e50;
 }
 
-.router {
-  width:100%;
-}
 #logo {
   width: 20%;
 }
@@ -85,11 +80,9 @@ export default {
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  margin-bottom: 100px;
 }
+
 header {
   background: #9b9b9b;
   width: 100%;
@@ -101,12 +94,12 @@ header {
 
 footer {
   width: 100%;
-  background: #222;
-  color: #fff;
+  background: #2222226e;
+  color: #c7c7c7;
   font-size: 1vmin;
   text-transform: uppercase;
   position: fixed;
-  bottom: 0;
+  bottom: 10px;
 }
 #idNavBar {
   width: 90%;
