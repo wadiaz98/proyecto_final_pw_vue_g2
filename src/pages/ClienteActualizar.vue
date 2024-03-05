@@ -1,5 +1,5 @@
 <template>
-  <h1>CREE SU CUENTA AVIS</h1>
+  <h1>ACTUALICE SUS DATOS</h1>
   <RegistroCliente
     v-if="this.cedula !== null"
     tipo="C"
@@ -28,4 +28,9 @@ export default {
 </script>
 
 <style scoped>
+.registro {
+  margin: auto;
+  width: 80%;
+}
+
 </style>

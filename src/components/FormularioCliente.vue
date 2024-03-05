@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <hr />
     <label for="">Cédula</label>
     <input v-if="funcion === 'insertar'" type="text" v-model="cedula" />
     <input
@@ -36,7 +35,7 @@
     />
     <input
       v-else
-      type="text"
+      type="datetime-local"
       v-model="fechaNacimiento"
       :disabled="this.funcion == 'visualizar'"
     />
@@ -62,7 +61,7 @@
       v-model="contrasenia"
       :disabled="this.funcion == 'visualizar'"
     />
-    <hr />
+
     <div v-if="funcion === 'insertar'" class="guardado">
       <h6>Lea nuestros términos y condiciones</h6>
       <button @click="guardar">Guardar</button>
@@ -81,7 +80,7 @@
 </template>
 
 <script scoped>
-import {mensaje} from '@/helpers/mensaje'
+import { mensaje } from "@/helpers/mensaje";
 import {
   registrarFachada,
   consultarFachada,
@@ -141,18 +140,17 @@ export default {
         /* VERIFICAR EL TIPO */
         registro: this.tipo,
       };
-      var verificar = await consultarFachada(this.cedula) !== null
-      console.log(verificar)
-      if (verificar){
-        mensaje("Error....", "La cedula ya existe en el sistema", "error")
+      var verificar = (await consultarFachada(this.cedula)) !== null;
+      console.log(verificar);
+      if (verificar) {
+        mensaje("Error....", "La cedula ya existe en el sistema", "error");
         this.refrescar();
-      }else{
+      } else {
         // INSERTA
-      await registrarFachada(clienteBody);
-      this.refrescar();
-      console.log("¡Se registró el cliente!");
+        await registrarFachada(clienteBody);
+        this.refrescar();
+        console.log("¡Se registró el cliente!");
       }
-      
     },
     async guardarCambios() {
       const clienteBody = {
@@ -201,23 +199,18 @@ export default {
 
 <style scoped>
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  padding: auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Dos columnas */
+  grid-template-rows: repeat(12, 2fr); /* Dos filas */
 }
-input {
-  width: 100%;
-}
+
 label {
   font-style: italic;
+  text-align: left;
 }
-.guardado {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: row;
+
+button{
+    width: 50%;
 }
 
 .otros {
@@ -226,16 +219,8 @@ label {
   grid-template-rows: repeat(2, 100px); /* Dos filas */
   gap: 10px; /* Espacio entre las celdas */
 }
-
-button{
-  padding: auto;
-  background: #d32f2f;
-  color: white;
-  line-height: 150%;
-  font-size: 2vmin;
-  font-style: bold;
-  border: #d32f2f;
-  width: 30%;
-  margin: center;
+.item_large {
+  grid-column: span 2; /* El elemento ocupa dos columnas */
 }
+
 </style>

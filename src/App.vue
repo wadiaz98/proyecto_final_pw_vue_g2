@@ -19,11 +19,11 @@
       </header>
 
       <router-view
-        class="router"
         @cambioTipo="actualizarTipo"
         @cambioCedula="actualizarCedula"
         :dato="cedula"
       />
+
       <footer>
         <h1>© 2024 Grupo 2, Programación Web</h1>
       </footer>
@@ -56,9 +56,9 @@ export default {
       console.log("desde la app.vue " + cedulaNueva);
       this.cedula = cedulaNueva;
     },
-    inicio(){
-      this.$router.push({path: "/inicio"})
-    }
+    inicio() {
+      this.$router.push({ path: "/inicio" });
+    },
   },
 };
 </script>
@@ -83,6 +83,17 @@ export default {
   margin-bottom: 100px;
 }
 
+button {
+  padding: auto;
+  background: #d03425;
+  color: white;
+  line-height: 150%;
+  font-size: 3vmin;
+  font-style: bold;
+  border: #d03425;
+  margin: auto;
+}
+
 header {
   background: #9b9b9b;
   width: 100%;
@@ -103,5 +114,45 @@ footer {
 }
 #idNavBar {
   width: 90%;
+  text-align: right;
+}
+
+.router {
+  background: blue;
+}
+
+/* estilos tabla Generales*/
+.tabla {
+  margin-top: 20px;
+  display: grid;
+  width: 100%;
+  border-collapse: collapse;
+  justify-content: center;
+}
+/* Estilos para las celdas de encabezado */
+.tabla th {
+  background-color: #4b3f53;
+  /*   border: 1px solid #dddddd; */
+  padding: 8px;
+  text-align: left;
+  color: #f1bf57;
+}
+
+/* Estilos para las celdas de datos */
+.tabla td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Estilos para las filas impares */
+.tabla tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+/* Bordes redondos para la tabla */
+.tabla {
+  border-radius: 10px;
+  overflow: hidden;
 }
 </style>

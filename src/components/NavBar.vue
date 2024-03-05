@@ -44,16 +44,18 @@ export default {
 <style scoped>
 menu {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: right;
+  text-align: right;
 }
 .menu a {
   text-decoration: none;
   color: #333;
   color: #2c3e50;
-  margin: 0px 5px;
+  margin: 1%;
   font-weight: bold;
-  padding: 10px;
+  font-size: 3vmin;
+  padding: 1vh 1vw;
   border-radius: 10px;
 }
 

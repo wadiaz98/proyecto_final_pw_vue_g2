@@ -1,5 +1,4 @@
 <template>
-  <h1>Cliente reservar</h1>
   <TablaReservar/>
 </template>
 

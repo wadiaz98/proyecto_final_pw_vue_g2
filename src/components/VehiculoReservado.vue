@@ -113,19 +113,13 @@ label {
   align-items: center;
   width: 45%;
 }
-button {
-  padding: auto;
-  background: #d03425;
-  color: white;
-  line-height: 150%;
-  font-size: 2vmin;
-  font-style: bold;
-  border: #d03425;
-  width: 30%;
-  margin: auto;
-}
+
 .idRetirar {
   line-height: 150%;
   width: 45%;
+}
+button{
+    width: 50%;
+  height: 40px;
 }
 </style>

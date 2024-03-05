@@ -1,6 +1,6 @@
 <template>
   <h1>Ingrese los siguientes datos</h1>
-  <RegistroVehiculo funcion="insertar"></RegistroVehiculo>
+  <RegistroVehiculo class="registro" funcion="insertar"></RegistroVehiculo>
 </template>
 
 
@@ -13,6 +13,9 @@ export default {
 };
 </script>
 
-<style>
-  
+<style scoped>
+.registro {
+  margin: auto;
+  width: 80%;
+}
 </style>

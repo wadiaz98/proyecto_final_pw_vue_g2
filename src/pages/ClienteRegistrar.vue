@@ -1,6 +1,10 @@
 <template>
   <h1>CREE SU CUENTA AVIS</h1>
-  <RegistroCliente tipo="C" funcion="insertar"></RegistroCliente>
+  <RegistroCliente
+    class="registro"
+    tipo="C"
+    funcion="insertar"
+  ></RegistroCliente>
 </template>
 
 
@@ -14,5 +18,9 @@ export default {
 </script>
 
 <style scoped>
-  
+.registro {
+  margin: auto;
+  width: 80%;
+}
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <h1>Buscar Vehículo</h1>
+  <h1>SELECCIONA UNA MARCA Y MODELO</h1>
   <div class="buscar">
     <label>Marca:</label>
     <select v-model="marca" id="cars" @change="obtenerModelos">
@@ -105,37 +105,5 @@ export default {
 
 <style scoped>
 /* Estilos para la tabla */
-.tabla {
-  margin-top: 20px;
-  display: grid;
-  width: 100%;
-  border-collapse: collapse;
-  justify-content: center;
-}
-/* Estilos para las celdas de encabezado */
-.tabla th {
-  background-color: #4b3f53;
-  /*   border: 1px solid #dddddd; */
-  padding: 8px;
-  text-align: left;
-  color: #f1bf57;
-}
 
-/* Estilos para las celdas de datos */
-.tabla td {
-  border: 1px solid #dddddd;
-  padding: 8px;
-  text-align: left;
-}
-
-/* Estilos para las filas impares */
-.tabla tr:nth-child(odd) {
-  background-color: #f9f9f9;
-}
-
-/* Bordes redondos para la tabla */
-.tabla {
-  border-radius: 10px;
-  overflow: hidden;
-}
 </style>

@@ -115,6 +115,11 @@ h1 {
   align-items: center;
   font-style: italic;
 }
+
+button{
+    width: 50%;
+  height: 40px;
+}
 .container {
   display: grid;
   grid-template-rows: repeat(auto-fill, minmax(1fr, 1fr));

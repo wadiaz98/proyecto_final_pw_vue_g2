@@ -1,6 +1,6 @@
 <template>
   <h1>Actualizar vehículo</h1>
-  <RegistroVehiculo v-if="this.placa !== null" funcion="actualizar" :clave="placa"></RegistroVehiculo>
+  <RegistroVehiculo class="registro" v-if="this.placa !== null" funcion="actualizar" :clave="placa"></RegistroVehiculo>
 </template>
 
 
@@ -27,5 +27,8 @@ export default {
 </script>
 
 <style scoped>
-  
+.registro {
+  margin: auto;
+  width: 80%;
+}
 </style>

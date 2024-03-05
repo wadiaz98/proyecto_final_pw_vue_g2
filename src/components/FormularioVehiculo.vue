@@ -80,16 +80,13 @@
     />
     <hr />
     <div v-if="funcion === 'insertar'" class="guardado">
-      <h6>Lea nuestros términos y condiciones</h6>
       <button @click="guardar">Guardar</button>
     </div>
     <div v-if="funcion === 'visualizar'" class="otros">
-      <h6 class="item_large">Lea nuestros términos y condiciones</h6>
       <button @click="volver()">Volver</button>
       <button @click="actualizar()">Actualizar</button>
     </div>
     <div v-if="funcion === 'actualizar'" class="otros">
-      <h6 class="item_large">Lea nuestros términos y condiciones</h6>
       <button @click="volver()">Volver</button>
       <button @click="guardarCambios()">Guardar Cambios</button>
     </div>
@@ -225,25 +222,20 @@ export default {
 
 <style scoped>
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  padding: auto;
-}
-input {
-  width: 100%;
-}
-label {
-  font-style: italic;
-}
-.guardado {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Dos columnas */
+  grid-template-rows: repeat(12, 2fr); /* Dos filas */
 }
 
+label {
+  font-style: italic;
+  text-align: left;
+}
+
+button {
+  width: 50%;
+  height: 40px;
+}
 .otros {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Dos columnas */

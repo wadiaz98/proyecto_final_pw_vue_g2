@@ -19,7 +19,7 @@ import { consultarDisponibilidadFachada } from "@/helpers/clienteReserva.js";
 export default {
   props: {
     placaRecibida: {},
-    cedulaRecibida:{}
+    cedulaRecibida: {},
   },
   data() {
     return {
@@ -42,7 +42,7 @@ export default {
         placa: this.placa,
       };
       console.log(clienteBody);
-     
+
       const valor = await consultarDisponibilidadFachada(clienteBody);
       console.log(valor);
       if (valor.disponibilidad) {
@@ -54,8 +54,8 @@ export default {
             parseFloat(valor.valorReserva),
           "success"
         );
-        console.log("desde formulario reservar " )
-        console.log( clienteBody)
+        console.log("desde formulario reservar ");
+        console.log(clienteBody);
         this.$emit("ver", clienteBody);
       } else {
         /* MENSAJE: SELECCIONAR OTRA FECHA PARA RESERVAR */
@@ -89,6 +89,10 @@ input {
 }
 label {
   font-style: italic;
+}
+button {
+  width: 50%;
+  height: 40px;
 }
 
 .item_large {

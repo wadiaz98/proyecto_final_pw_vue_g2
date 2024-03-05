@@ -25,36 +25,39 @@ export default {
         fechaFin: null,
       },
       numeroTarjeta: null,
-
     };
-
   },
   mounted() {
     this.reserva = this.data; /* Recibiendo los datos del padre */
-    console.log("desde componente formulario pago")
-    console.log(this.reserva)
+    console.log("desde componente formulario pago");
+    console.log(this.reserva);
   },
   methods: {
     async reservar() {
       const reservaFinal = await reservarFachada(this.reserva);
-      
-      console.log(reservaFinal)
+
+      console.log(reservaFinal);
       console.log("Se realizó correctamente la reserva");
       const clienteBody = {
         numeroTarjeta: this.numeroTarjeta,
         reserva: reservaFinal.numero,
-        fecha:null, 
+        fecha: null,
       };
       const clienteB = {
         numeroTarjeta: this.numeroTarjeta,
         reserva: reservaFinal,
-        fecha:null, 
+        fecha: null,
       };
-      const cobro = await cobroFachada(clienteBody); 
+      const cobro = await cobroFachada(clienteBody);
       console.log(clienteB);
       this.$emit("ver", clienteB);
     },
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+button {
+  width: 50%;
+  height: 40px;
+}
+</style>

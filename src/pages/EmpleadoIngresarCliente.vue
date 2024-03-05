@@ -1,6 +1,6 @@
 <template>
   <h1>Ingresar cliente</h1>
-  <RegistroCliente tipo="E" funcion="insertar"></RegistroCliente>
+  <RegistroCliente class="registro" tipo="E" funcion="insertar"></RegistroCliente>
 </template>
 
 
@@ -14,5 +14,8 @@ export default {
 </script>
 
 <style scoped>
-  
+.registro {
+  margin: auto;
+  width: 80%;
+}
 </style>
