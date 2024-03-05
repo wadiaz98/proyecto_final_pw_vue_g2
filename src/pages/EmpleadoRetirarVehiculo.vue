@@ -1,39 +1,40 @@
 <template>
   <h1>¿TIENE RESERVA?</h1>
   <button @click="reserva()">Reserva</button>
-  <button @click="sinReserva()">Sin reserva</button>
-  <RetirarVehiculoReservado v-if="isReserva" />
-  <RetirarSinReserva v-if="isntReserva" />
+  <button @click="sinReservar()">Sin reserva</button>
+  <VehiculoReservado v-if="conReserva" />
+  <RetirarSinReserva v-if="sinReserva" />
 </template>
 
 <script>
 import { mensaje } from "@/helpers/mensaje";
-import RetirarVehiculoReservado from "@/components/VehiculoReservado.vue";
+import VehiculoReservado from "@/components/VehiculoReservado.vue";
 import RetirarSinReserva from "@/components/RetirarSinReserva.vue";
 export default {
   components: {
-    RetirarVehiculoReservado,
+    VehiculoReservado,
     RetirarSinReserva,
   },
   data() {
     return {
-      isReserva: false,
-      isntReserva: false,
+      conReserva: false,
+      sinReserva: false,
     };
   },
 
   methods: {
     reserva() {
-      this.isreserva = true;
-      this.isntreserva = false;
-      console.log(this.isntReserva);
-      console.log(this.isReserva);
+      this.conReserva = true;
+      this.sinReserva = false;
+      console.log(this.conReserva);
+      console.log(this.sinReserva);
     },
-    sinReserva() {
-      this.isntReserva = true;
-      this.isreserva = false;
-      console.log(this.isntReserva);
-      console.log(this.isReserva);
+    sinReservar() {
+      this.conReserva = false;
+      this.sinReserva = true;
+            console.log(this.conReserva);
+      console.log(this.sinReserva);
+
     },
   },
 };
@@ -43,5 +44,9 @@ export default {
 .registro {
   margin: auto;
   width: 80%;
+}
+
+button{
+  margin: 10px;
 }
 </style>
