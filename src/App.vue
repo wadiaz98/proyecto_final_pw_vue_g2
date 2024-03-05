@@ -20,9 +20,6 @@
       </header>
 
       <router-view class="router" @cambio-tipo="actualizarTipo" />
-
-      <!--   <mensaje :data="true" /> -->
-
       <footer>
         <h1>© 2024 Grupo 2, Programación Web</h1>
       </footer>
@@ -33,14 +30,12 @@
 <script>
 import navBar from "@/components/NavBar.vue";
 import router from "@/router/router";
-import mensaje from "@/components/Mensaje.vue";
-import { mount } from "@vue/test-utils";
+import { mount } from '@vue/test-utils';
 export default {
   name: "App",
   components: {
     navBar,
     router,
-    mensaje,
   },
   data() {
     return {

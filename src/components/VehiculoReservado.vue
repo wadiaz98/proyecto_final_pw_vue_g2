@@ -31,7 +31,7 @@ import {
   retirarVehiculoReservadoFachada,
   obtenerReservaFachada,
 } from "@/helpers/clienteReserva";
-import mensaje from '@'
+import {mensaje} from '@/helpers/mensaje'
 export default {
   data() {
     return {
@@ -65,6 +65,7 @@ export default {
       var data = await obtenerReservaFachada(this.reserva);
       await retirarVehiculoReservadoFachada(this.reserva);
       this.estado = data.estado;
+      mensaje('Retiro', 'Se ha ejecutado el retiro exitosamente', 'success')
     },
   },
 };
