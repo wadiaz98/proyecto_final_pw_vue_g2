@@ -1,7 +1,7 @@
 <template>
   <h1>PAGAR LA RESERVACIÓN</h1>
   <label for="">Ingrese su número de tarjeta</label>
-  <input type="text" v-model="tarjeta" />
+  <input type="text" v-model="numeroTarjeta" />
   <button @click="pagar">Pagar</button>
 </template>
 
