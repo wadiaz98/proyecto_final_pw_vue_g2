@@ -20,19 +20,10 @@ export default {
       cedula: null,
     };
   },
-  mounted() {
-    EventBus.$on("cedula", (nuevosDatos) => {
-      this.cedula = nuevosDatos;
-      console.log("la clave que llego es " + cedula)
-    });
-  },
   data() {
     return {
-      cedula: this.$route.query.usuario.id,
+      cedula: null,
     };
-  },
-  beforeCreate() {
-    this.cedula = this.$route.query.usuario.id;
   },
 };
 </script>

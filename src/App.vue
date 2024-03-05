@@ -19,7 +19,11 @@
         <navBar id="idNavBar" :tipo="tipo" />
       </header>
 
-      <router-view class="router" @cambio-tipo="actualizarTipo" />
+      <router-view
+        class="router"
+        @cambioTipo="actualizarTipo"
+        @cambioCedula="actualizarCedula"
+      />
       <footer>
         <h1>© 2024 Grupo 2, Programación Web</h1>
       </footer>
@@ -28,9 +32,10 @@
 </template>
 
 <script>
+import {Vue }from "vue"
 import navBar from "@/components/NavBar.vue";
 import router from "@/router/router";
-import { mount } from '@vue/test-utils';
+import { mount } from "@vue/test-utils";
 export default {
   name: "App",
   components: {
@@ -43,15 +48,17 @@ export default {
       cedula: null,
     };
   },
+  updated(){
+    this.actualizarDatos();
+  },
   methods: {
     actualizarTipo(nuevoTipo) {
-      console.log(nuevotipo);
-      this.tipo = nuevoTipo.tipo;
-      this.cedula = tipo.cedula;
-      console.log(nuevotipo);
+      console.log("desde la app.vue " + nuevoTipo);
+      this.tipo = nuevoTipo;
     },
-    emitirDatos() {
-      EventBus.$emit("cedula", this.cedula);
+    actualizarCedula(cedulaNueva) {
+      console.log("desde la app.vue " + cedulaNueva);
+      this.cedula = cedulaNueva;
     },
   },
 };

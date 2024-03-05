@@ -89,7 +89,8 @@ export default {
           customClass: "messageBox",
           callback: () => {
             // Acciones después de hacer clic en "Aceptar"
-            this.$emit("cambio-tipo",  nuevo = {tipo:"C",cedula:this.cedula});
+            this.$emit("cambioTipo", "C");
+            this.$emit("cambioCedula", this.cedula);
             this.usuario.id = this.cedula;
             this.usuario.tipo = "C";
             this.redireccionar();
