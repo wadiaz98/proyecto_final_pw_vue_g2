@@ -148,6 +148,7 @@ export default {
       } else {
         // INSERTA
         await registrarFachada(clienteBody);
+        mensaje("Exito....", "Se ha guardado correctamente", "success");
         this.refrescar();
         console.log("¡Se registró el cliente!");
       }

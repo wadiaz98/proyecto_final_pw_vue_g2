@@ -24,6 +24,7 @@ export default {
       this.$emit("cambio-tipo", "V");
       this.usuario.id = null;
       this.usuario.tipo = "V";
+      mensaje("Sliendo....", "Se volvera a la Pagina de Inicio", "success");
       this.redireccionar();
     },
     redireccionar() {
