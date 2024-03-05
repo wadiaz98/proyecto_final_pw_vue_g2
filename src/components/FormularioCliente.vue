@@ -81,6 +81,7 @@
 </template>
 
 <script scoped>
+import {mensaje} from '@/helpers/mensaje'
 import {
   registrarFachada,
   consultarFachada,
@@ -143,7 +144,7 @@ export default {
       var verificar = await consultarFachada(this.cedula) !== null
       console.log(verificar)
       if (verificar){
-        this.mensaje("Error....", "La cedula ya existe en el sistema", "error")
+        mensaje("Error....", "La cedula ya existe en el sistema", "error")
         this.refrescar();
       }else{
         // INSERTA
@@ -165,6 +166,7 @@ export default {
         registro: this.registro,
       };
       var data = await actualizarFachada(clienteBody.cedula, clienteBody);
+      mensaje("Actualizando....", "Se ha Actualizado Correctamente", "success");
       this.visualizar(this.cedula);
     },
 
