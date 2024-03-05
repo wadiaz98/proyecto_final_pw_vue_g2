@@ -1,38 +1,37 @@
 <template>
   <div class="container">
-    <hr />
     <label>N° de reserva</label>
-    <hr />
     <input
       v-model="reserva"
       type="number"
       placeholder="Ingrese el número de reserva"
     />
-    <hr />
+    <hr/>
     <button @click="buscar">Buscar</button>
     <div v-if="crear">
       <label for="">Placa</label>
       <p>{{ placa }}</p>
       <label for="">Modelo</label>
       <p>{{ modelo }}</p>
-      <label for="">Estado:</label>
+      <label for="">Estado</label>
       <p>{{ estado }}</p>
-      <label for="">Desde:</label>
+      <label for="">Desde</label>
       <p>{{ fechaInicio }}</p>
-      <label for="">Hasta:</label>
+      <label for="">Hasta</label>
       <p>{{ fechaFin }}</p>
-      <label for="">Reservado por:</label>
+      <label for="">Reservado por</label>
       <p>{{ cedula }}</p>
-      <label v-if="extra" for="">Fecha de retiro:</label>
-      <p v-if="extra">{{ retiro }}</p>
-      <hr />
-      <button @click="retirar">Retirar</button>
+      <button class="idRetirar" @click="retirar">Retirar</button>
     </div>
   </div>
 </template>
 
 <script>
-import {retirarVehiculoReservadoFachada ,obtenerReservaFachada} from "@/helpers/clienteReserva";
+import {
+  retirarVehiculoReservadoFachada,
+  obtenerReservaFachada,
+} from "@/helpers/clienteReserva";
+import mensaje from '@'
 export default {
   data() {
     return {
@@ -45,13 +44,13 @@ export default {
       estado: null, // si esta disponible o no el vehículo
       retiro: null, //fecha en la que se retira el vehículo reservado
       crear: false,
-      extra: false, //Creará la fecha de retiro
     };
   },
+
   methods: {
     async buscar() {
       var data = await obtenerReservaFachada(this.reserva);
-      console.log(data)
+      console.log(data);
       if (data !== undefined) {
         this.placa = data.placa;
         this.modelo = data.modelo;
@@ -59,26 +58,60 @@ export default {
         this.fechaFin = data.fechaFin;
         this.cedula = data.cedula;
         this.estado = data.estado;
-        this.retiro = data.retiro;
         this.crear = true;
       }
     },
     async retirar() {
-      this.extra = true;
+      var data = await obtenerReservaFachada(this.reserva);
       await retirarVehiculoReservadoFachada(this.reserva);
+      this.estado = data.estado;
     },
   },
 };
 </script>
 
 <style scoped>
-input {
-  width: 100%;
+input{
+  width: 47%;
   border-radius: 10px;
   text-align: center;
 }
-
+p,
+label {
+  font-size: 2vmin;
+  font-style: bold;
+  border-radius: 15px;
+  background: #9b9b9b;
+  width: 100%;
+  line-height: 150%;
+  box-sizing: content-box;
+  color: black;
+  border-radius: 10px;
+}
+label {
+  background: white;
+  color: black;
+}
 .container {
-  width: 11%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+
+}
+button {
+  padding: auto;
+  background: red;
+  color: white;
+  line-height: 150%;
+  font-size: 2vmin;
+  font-style: bold;
+  border: red;
+  width: 30%;
+  border-radius: 10px;
+  margin: auto;
+}
+.idRetirar{
+  width: 45%;
 }
 </style>
