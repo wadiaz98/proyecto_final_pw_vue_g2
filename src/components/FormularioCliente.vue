@@ -9,6 +9,15 @@
       :disabled="this.funcion === 'visualizar' || this.tipo === 'C'"
     />
 
+        <label for="">Hobbie</label>
+    <input v-if="funcion === 'insertar'" type="text" v-model="hobbie" />
+    <input
+      v-else
+      type="text"
+      v-model="hobbie"
+      :disabled="this.funcion == 'visualizar'"
+    />
+
     <label for="">Nombre</label>
     <input v-if="funcion === 'insertar'" type="text" v-model="nombre" />
     <input
@@ -114,6 +123,7 @@ export default {
       contrasenia: null,
       genero: null,
       registro: null,
+      hobbie:null,
     };
   },
   methods: {
@@ -128,6 +138,7 @@ export default {
         this.fechaNacimiento = data.fechaNacimiento;
         this.contrasenia = data.password;
         this.registro = data.registro;
+        this.hobbie = data.hobbie;
       }
     },
     async guardar() {
@@ -139,6 +150,7 @@ export default {
         genero: this.genero,
         fechaNacimiento: this.fechaNacimiento,
         password: this.contrasenia,
+        hobbie: this.hobbie,
         /* VERIFICAR EL TIPO */
         registro: this.tipo,
       };
@@ -163,6 +175,7 @@ export default {
         genero: this.genero,
         fechaNacimiento: this.fechaNacimiento,
         password: this.contrasenia,
+        hobbie: this.hobbie,
         /* VERIFICAR EL TIPO */
         registro: this.registro,
       };
@@ -211,7 +224,7 @@ export default {
 .container {
   display: grid;
   grid-template-columns: repeat(1, 1fr); /* Dos columnas */
-  grid-template-rows: repeat(12, 2fr); /* Dos filas */
+  grid-template-rows: repeat(14, 2fr); /* Dos filas */
 }
 
 label {

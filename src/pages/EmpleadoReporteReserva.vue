@@ -4,10 +4,10 @@
     <label>Fecha inicio:</label>
     <input type="datetime-local" v-model="fechaInicio" />
     <label>Fecha Fin:</label>
-    <input type="datetime-local" v-model="fechaFin" @change="buscar"/>
+    <input type="datetime-local" v-model="fechaFin" @change="buscar" />
   </div>
   <div class="tabla">
-    <table >
+    <table>
       <thead>
         <tr>
           <th>N°</th>
@@ -18,6 +18,7 @@
           <th>Total</th>
           <th>CedulaCliente</th>
           <th>Apellido Cliente</th>
+          <th>Hobbie</th>
           <th>Placa</th>
           <th>Marca</th>
           <th>Modelo</th>
@@ -30,25 +31,23 @@
           <td>{{ reserva.numero }}</td>
           <td>{{ reserva.subtotal }}</td>
           <td>{{ reserva.estado }}</td>
-          <td>{{ reserva.iva   }}</td>
+          <td>{{ reserva.iva }}</td>
           <td>{{ reserva.total }}</td>
           <td>{{ reserva.cedula }}</td>
           <td>{{ reserva.apellido }}</td>
+          <td>{{ reserva.hobbie }}</td>
           <td>{{ reserva.placa }}</td>
           <td>{{ reserva.marca }}</td>
           <td>{{ reserva.modelo }}</td>
         </tr>
       </tbody>
     </table>
-   
   </div>
 </template>
 
 <script>
 import { mensaje } from "@/helpers/mensaje";
-import {
-  obtenerReporteReservasFachada,
-} from "@/helpers/clienteReserva";
+import { obtenerReporteReservasFachada } from "@/helpers/clienteReserva";
 export default {
   data() {
     return {
@@ -59,10 +58,13 @@ export default {
   },
 
   methods: {
-    async buscar(){
-      var data = await obtenerReporteReservasFachada(this.fechaInicio, this.fechaFin)
-      this.reservas= data;
-    }
+    async buscar() {
+      var data = await obtenerReporteReservasFachada(
+        this.fechaInicio,
+        this.fechaFin
+      );
+      this.reservas = data;
+    },
   },
 };
 </script>

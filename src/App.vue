@@ -22,7 +22,7 @@
         @cambioTipo="actualizarTipo"
         @cambioCedula="actualizarCedula"
         :dato="cedula"
-        :cosa="tipo"
+        :sinRese="tipo"
       />
 
       <footer>
